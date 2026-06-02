@@ -1,0 +1,144 @@
+[
+  {
+    "ticket_id": "DASH-12194",
+    "lab": "Nephro",
+    "module": "referral_ledger",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "Request to add 'Dr. Kathleen Joy G. Garingarao' as a new referral.",
+    "root_cause": "New doctor not yet onboarded into referral master data for Nephro at time of request.",
+    "actions": [
+      "Added 'Dr. Kathleen Joy G. Garingarao' to the Nephro referral ledger.",
+      "Verified the doctor appears and is selectable in referral selection lists."
+    ],
+    "solver": "Martin Aniceto",
+    "tags": [
+    "referral-ledger",
+    "master-data",
+    "nephro",
+    "new-referral-request"
+    ]
+  },
+  {
+    "ticket_id": "DASH-12195",
+    "lab": "Helpful Gen",
+    "module": "product_add_update",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "Add and template Thyroid Function CLIA package and related tests as in-house services, with initial price set to 0 PHP since the lab will update pricing in-house.",
+    "root_cause": "Thyroid Function CLIA package and related tests were not yet configured as in-house services and had no defined package price.",
+    "actions": [
+        "Added CLIA versions of the requested tests to the lab's Immuno/Sero services and updated docsgens/templates.",
+        "Updated product templates so these tests now use in-house services instead of send-out.",
+        "Set the Thyroid Function CLIA package price to 0 PHP initially, as per lab instruction that they will update the price in-house."
+    ],
+    "solver": "Martin Julian Aniceto",
+    "tags": [
+        "product-add-update",
+        "thyroid-function",
+        "clia",
+        "in-house-service",
+        "pricing-0-initial"
+    ]
+  },
+  {
+    "ticket_id": "DASH-12196",
+    "lab": "Sierra Makiling",
+    "module": "document_generation",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "Receipt are being printed on whole bond paper",
+    "root_cause": "null",
+    "actions": [
+        "In Documents -> Page Setup, set the Height to 279.4 mm and width to 80 mm"
+    ],
+    "solver": "Adrian Adajar",
+    "tags": [
+        "page-setup",
+        "receipt-printing",
+        "document-generation"
+    ]
+  },
+    {
+    "ticket_id": "DASH-12213",
+    "lab": "OMNIA",
+    "module": "document_generation",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "Add a Standard X-Ray Format Result [Can Copy in OG Test-Lab]",
+    "root_cause": "Go to documents, Patient Service, (Not Patient Services ah), and search for X-ray, and create a duplicate template based on the client's request.",
+    "actions": [
+        "Went to documents, Patient Service, (Not Patient Services ah), and search for X-ray, and created a duplicate template based on the client's request."
+    ],
+    "solver": "",
+    "tags": [
+        "add_template",
+        "x-ray",
+        "document-generation"
+    ]
+  },
+  {
+    "ticket_id": "DASH-12214",
+    "lab": "ValleyMed",
+    "module": "document_generation",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "In result form Hematology, would it be possible that results and references be standardized to two decimal places with trailing zeros retained. For example 0.60 instaed of 0.6",
+    "root_cause": "null",
+    "actions": [
+        "In Documents -> Hematology, simply edit the results and edit the code to have 2 decimal places."
+    ],
+    "solver": "Martin Aniceto",
+    "tags": [
+        "document-generation",
+        "decimal-places",
+        "hematology",
+        "result-formatting"
+    ]
+  },
+    {
+    "ticket_id": "DASH-12241",
+    "lab": "Neolab Medical",
+    "module": "patient",
+    "status": "resolved",
+    "date_reported": "2026-05-31",
+    "concern_summary": "Delete patient record.",
+    "root_cause": "null",
+    "actions": [
+        "Go to Patients -> Search for patient -> Delete patient record"
+    ],
+    "solver": "Jeremy Espera",
+    "tags": [
+        "patient-management",
+        "record-deletion"
+    ]
+  },
+
+  {
+    "ticket_id": "DASH-12211",
+    "lab": "SWIFT",
+    "module": "services",
+    "status": "",
+    "date_reported": "2026-05-31",
+    "concern_summary": "Add Service Fields & Category. Fungal Elements with Service Fields of Budding Yeasts, Pseudohyphae.",
+    "root_cause": "",
+    "actions": [
+        "Went to Services -> Microbiology -> Add Category Fungal Elements with Service Fields of Budding Yeasts, Pseudohyphae."
+    ],
+    "solver": "Martin Aniceto",
+    "tags": [
+        "services",
+        "category-addition",
+        "fungal-elements",
+        "microbiology",
+        "service-fields"
+    ]
+  }
+]
+
+
+
+
+
+
+
