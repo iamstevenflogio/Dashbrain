@@ -56,6 +56,28 @@ def main():
 
     top_indices = np.argsort(scores)[::-1][:TOP_K]
 
+    best_idx = top_indices[0]
+    best_card = cards[best_idx]
+    best_score = scores[best_idx]
+
+    print("\n=== Suggested Fix ===\n")
+    if best_score >= 0.30:
+        print(f"This issue appears most similar to {best_card.get('ticket_id')} ({best_card.get('module')}).")
+        print("Recommended action:")
+        for step in best_card.get("actions", []):
+            print(f"- {step}")
+
+        root_cause = best_card.get("root_cause")
+        if root_cause:
+            print(f"\nLikely root cause: {root_cause}")
+        
+        print(f"\nConfidence basis: similarity score = {best_score:.4f}")
+    else:
+        print("No strong match found yet.")
+        print("Please review the closest issue cards below before applying a fix.")
+        print(f"Best available similarity score = {best_score:.4f}")
+    
+
     print("\nTop matching issue cards:\n")
     for rank, idx in enumerate(top_indices, start=1):
         card = cards[idx]
@@ -69,7 +91,7 @@ def main():
         print(f"    Solver: {card.get('solver')}")
         print(f"    Tags: {', '.join(card.get('tags', []))}")
         print()
-    
+
 if __name__ == "__main__":
     main()
 
