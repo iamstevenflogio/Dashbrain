@@ -1,11 +1,11 @@
 
 # Welcome to Dashbrain!
 
-Dashbrain is a small Python tool that helps support interns quickly find similar past issues and recommended fixes using a JSON knowledge base (`issue_cards.json`) and a retrieval script (`retrieval.py`). [page:1]
+Dashbrain is a small Python tool that helps support interns quickly find similar past issues and recommended fixes using a JSON knowledge base (`issue_cards.json`) and a retrieval script (`retrieval.py`). 
 
 ## Project overview
 
-Dashbrain acts as a lightweight "company brain" for Dashlabs.ai support work. It stores past issues as structured JSON cards and lets you retrieve similar cases to speed up investigation and responses. [page:1]
+Dashbrain acts as a lightweight "company brain" for Dashlabs.ai support work. It stores past issues as structured JSON cards and lets you retrieve similar cases to speed up investigation and responses. 
 
 ## Repository structure
 
