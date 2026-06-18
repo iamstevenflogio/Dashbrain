@@ -1,7 +1,9 @@
 
 # Welcome to Dashbrain!
 
-Dashbrain is a small Python tool that helps support interns quickly find similar past issues and recommended fixes using a JSON knowledge base (`issue_cards.json`) and a retrieval script (`retrieval.py`). 
+Dashbrain is a Python tool that helps support interns quickly find similar past issues and recommended fixes using a JSON knowledge base (`issue_cards.json`) a backend retrieval script (`app.py`). 
+
+## Note: (`retrieval.py`) is just a prototype without the interface, so its not connected to the main system.
 
 ## Project overview
 
