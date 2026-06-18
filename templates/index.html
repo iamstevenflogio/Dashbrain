@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashbrain</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+
+    <!-- 1. Paste concern -->
+    <form method="POST" class="card card-input">
+      <label for="query" class="label">Paste concern here</label>
+      <textarea id="query" name="query" placeholder="Paste ticket or concern here">{{ query }}</textarea>
+      <button type="submit">Ask Dashbrain</button>
+    </form>
+
+    <!-- 2. Recommended actions -->
+    <section class="card card-actions">
+      <h2>Recommended actions</h2>
+      {% if best_card %}
+        {% set steps = best_card.recommended_fix if best_card.recommended_fix else best_card.actions %}
+        {% if steps %}
+          <ol>
+            {% for step in steps %}
+              <li>{{ step }}</li>
+            {% endfor %}
+          </ol>
+        {% else %}
+          <p>No saved actions for this ticket.</p>
+        {% endif %}
+      {% else %}
+        <p>No recommendation yet. Paste a concern and click Ask Dashbrain.</p>
+      {% endif %}
+    </section>
+
+    <!-- 3. Transparency + solver -->
+    <section class="card card-transparency">
+      <h2>Why this answer?</h2>
+
+      {% if best_card %}
+        <p><strong>Matched ticket:</strong> {{ best_card.ticket_id }} · {{ best_card.lab }} · {{ best_card.module }}</p>
+        <p><strong>Similarity score:</strong> {{ '%.4f'|format(best_score or 0) }}</p>
+        <p><strong>Concern:</strong> {{ best_card.concern_summary }}</p>
+        <p><strong>Root cause:</strong> {{ best_card.root_cause }}</p>
+
+        <!-- Solver transparency -->
+        <p><strong>Solver:</strong> {{ best_card.solver }}</p>
+        <p class="hint">
+          This suggestion is based on how {{ best_card.solver }} previously resolved a similar case.
+          Always verify if the context still matches.
+        </p>
+      <!-- Other top matches -->
+        {% if results and results|length > 1 %}
+          <hr class="divider" />
+          <p><strong>Other close matches:</strong></p>
+          <ul class="small-list">
+            {% for item in results[1:3] %}
+              <li>
+                {{ item.card.ticket_id }} · {{ item.card.lab }} · {{ item.card.module }}
+                (score {{ '%.4f'|format(item.score) }})
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% else %}
+        <p>No match yet. We will show the matched ticket, score, solver, and other close matches here.</p>
+      {% endif %}
+    </section>
+
+  </div>
+</body>
+</html>

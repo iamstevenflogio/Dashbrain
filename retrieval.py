@@ -1,15 +1,18 @@
 import json
 import numpy as np
+import streamlit as st
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-MODEL_NAME = "all-MiniLM-L6-v2" # BERT type model for sentence embeddings
+MODEL_NAME = "all-MiniLM-L6-v2"
 JSON_PATH = "issue_cards.json"
-TOP_K = 3   # number of similar issue cards to retrieve
+TOP_K = 3
+
 
 def build_search_text(card):
     actions = " ".join(card.get("actions", []))
     tags = ", ".join(card.get("tags", []))
+    recommended_fix = " ".join(card.get("recommended_fix", []))
     parts = [
         f"Ticket: {card.get('ticket_id', '')}",
         f"Lab: {card.get('lab', '')}",
@@ -17,81 +20,96 @@ def build_search_text(card):
         f"Status: {card.get('status', '')}",
         f"Concern: {card.get('concern_summary', '')}",
         f"Root cause: {card.get('root_cause', '')}",
+        f"Recommended fix: {recommended_fix}",
         f"Actions: {actions}",
         f"Solver: {card.get('solver', '')}",
         f"Tags: {tags}",
     ]
     return "\n".join(parts)
 
+
 def load_cards(path):
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(path, "r", encoding="utf-8") as f:
         cards = json.load(f)
-    cards = [c for c in cards if c.get('ticket_id')]
-    return cards
+    return [c for c in cards if c.get("ticket_id")]
+
+
+@st.cache_resource
+def load_model():
+    return SentenceTransformer(MODEL_NAME)
+
+
+@st.cache_data
+def build_embeddings(cards):
+    model = load_model()
+    texts = [build_search_text(card) for card in cards]
+    return model.encode(texts, convert_to_numpy=True)
+
 
 def main():
-    cards = load_cards(JSON_PATH)
+    st.title("Company Brain")
+
+    try:
+        cards = load_cards(JSON_PATH)
+    except FileNotFoundError:
+        st.error("issue_cards.json not found.")
+        return
+    except json.JSONDecodeError as e:
+        st.error(f"Invalid JSON: {e}")
+        return
+
     if not cards:
-        print("No valid issue cards found in issue_cards.json")
+        st.warning("No valid issue cards found.")
         return
-    
-    texts = [build_search_text(card) for card in cards]
 
-    print(f"Loading embedding model: {MODEL_NAME}")
-    model = SentenceTransformer(MODEL_NAME)
+    model = load_model()
+    card_embeddings = build_embeddings(cards)
 
-    print("Embedding issue cards...")
-    card_embeddings = model.encode(texts, convert_to_numpy=True)
+    query = st.text_area("Paste ticket details")
 
-    print(f"Loaded {len(cards)} issue cards.")
-    print("Type your pasted ticket/concern below.")
-    query = input("\nQuery: ").strip()
+    if st.button("Ask Company Brain"):
+        if not query.strip():
+            st.warning("Paste a ticket first.")
+            return
 
-    if not query:
-        print("Empty query. Exiting.")
-        return
-    
-    query_embedding = model.encode([query], convert_to_numpy=True)
-    scores = cosine_similarity(query_embedding, card_embeddings)[0]
+        query_embedding = model.encode([query], convert_to_numpy=True)
+        scores = cosine_similarity(query_embedding, card_embeddings)[0]
+        top_indices = np.argsort(scores)[::-1][:TOP_K]
 
-    top_indices = np.argsort(scores)[::-1][:TOP_K]
+        best_idx = top_indices[0]
+        best_card = cards[best_idx]
+        best_score = scores[best_idx]
 
-    best_idx = top_indices[0]
-    best_card = cards[best_idx]
-    best_score = scores[best_idx]
+        st.write("Suggested Fix")
 
-    print("\n=== Suggested Fix ===\n")
-    if best_score >= 0.30:
-        print(f"This issue appears most similar to {best_card.get('ticket_id')} ({best_card.get('module')}).")
-        print("Recommended action:")
-        for step in best_card.get("actions", []):
-            print(f"- {step}")
+        if best_score >= 0.30:
+            st.write(f"Best match: {best_card.get('ticket_id')} ({best_card.get('module')})")
+            if best_card.get("root_cause"):
+                st.write(f"Likely root cause: {best_card.get('root_cause')}")
 
-        root_cause = best_card.get("root_cause")
-        if root_cause:
-            print(f"\nLikely root cause: {root_cause}")
-        
-        print(f"\nConfidence basis: similarity score = {best_score:.4f}")
-    else:
-        print("No strong match found yet.")
-        print("Please review the closest issue cards below before applying a fix.")
-        print(f"Best available similarity score = {best_score:.4f}")
-    
+            steps = best_card.get("recommended_fix") or best_card.get("actions", [])
+            for step in steps:
+                st.write(f"- {step}")
 
-    print("\nTop matching issue cards:\n")
-    for rank, idx in enumerate(top_indices, start=1):
-        card = cards[idx]
-        print(f"[{rank}] Ticket ID: {card.get('ticket_id')}")
-        print(f"    Lab: {card.get('lab')}")
-        print(f"    Module: {card.get('module')}")
-        print(f"    Similarity Score: {scores[idx]:.4f}")
-        print(f"    Concern: {card.get('concern_summary')}")
-        print(f"    Root Cause: {card.get('root_cause')}")
-        print(f"    Actions: {' | '.join(card.get('actions', []))}")
-        print(f"    Solver: {card.get('solver')}")
-        print(f"    Tags: {', '.join(card.get('tags', []))}")
-        print()
+            st.write(f"Similarity score: {best_score:.4f}")
+        else:
+            st.write("No strong match found.")
+            st.write(f"Best available similarity score: {best_score:.4f}")
+
+        st.write("Top matching issue cards")
+
+        for rank, idx in enumerate(top_indices, start=1):
+            card = cards[idx]
+            st.write(f"[{rank}] Ticket ID: {card.get('ticket_id')}")
+            st.write(f"Lab: {card.get('lab')}")
+            st.write(f"Module: {card.get('module')}")
+            st.write(f"Similarity Score: {scores[idx]:.4f}")
+            st.write(f"Concern: {card.get('concern_summary')}")
+            st.write(f"Root Cause: {card.get('root_cause')}")
+            st.write(f"Solver: {card.get('solver')}")
+            st.write(f"Tags: {', '.join(card.get('tags', []))}")
+            st.write("")
+
 
 if __name__ == "__main__":
     main()
-
