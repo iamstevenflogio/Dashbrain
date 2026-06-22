@@ -9,7 +9,7 @@
     "root_cause": "New doctor not yet onboarded into referral master data for Nephro at time of request.",
     "actions": [
       "Add doctor to the lab's referral ledger.",
-      "Verify the doctor appears and is selectable in referral selection lists."
+      "Verified the doctor appears and is selectable in referral selection lists."
     ],
     "solver": "Martin Aniceto",
     "tags": [
@@ -19,145 +19,142 @@
     "new-referral-request"
     ]
   },
-{
-  "ticket_id": "DASH-12195",
-  "lab": "Helpful Gen",
-  "module": "products",
-  "status": "resolved",
-  "date_reported": "2026-05-30",
-  "concern_summary": "Add and template Thyroid Function CLIA package and related tests as in-house services, with initial price set to 0 PHP since the lab will update pricing in-house.",
-  "root_cause": "Thyroid Function CLIA package and related tests were not yet configured as in-house services and had no defined package price.",
-  "actions": [
-    "Add CLIA versions of the requested tests under the lab's Immuno/Sero services and update the related document templates.",
-    "Update the relevant product templates so these tests use in-house services instead of send-out.",
-    "Set the Thyroid Function CLIA package price to 0 PHP initially, following the lab's instruction to update the price in-house later."
-  ],
-  "solver": "Martin Julian Aniceto",
-  "tags": [
-    "product-add-update",
-    "thyroid-function",
-    "clia",
-    "in-house-service",
-    "pricing-0-initial"
-  ]
-},
-{
-"ticket_id": "DASH-12196",
-"lab": "Sierra Makiling",
-"module": "document_generation",
-"status": "resolved",
-"date_reported": "2026-05-30",
-"concern_summary": "Receipt are being printed on whole bond paper",
-"root_cause": "The receipts document did not have the correct page setup for receipt printing.",
-"actions": [
-    "In Documents -> Page Setup, set Height and Width to the appropriate size. Ask around for the specific dimensions.",
-    "For receipt printing, set the Height to 279.4 mm and width to 80 mm"
-],
-"solver": "Adrian Adajar",
-"tags": [
-    "page-setup",
-    "receipt-printing",
-    "document-generation"
-]
-},
-{
-  "ticket_id": "DASH-12213",
-  "lab": "OMNIA",
-  "module": "document_generation",
-  "status": "resolved",
-  "date_reported": "2026-05-30",
-  "concern_summary": "Add a Standard X-Ray Format Result [Can Copy in OG Test-Lab]",
-  "root_cause": "Go to documents, Patient Service, (Not Patient Services ah), and search for X-ray, and create a duplicate template based on the client's request.",
-  "actions": [
-    "Navigate to Documents and open the Patient Service templates (not Patient Services).",
-    "Search for an existing X-ray template and create a duplicate based on the client's requested standard format."
-  ],
-  "solver": "Steven Flogio",
-  "tags": [
-    "add_template",
-    "x-ray",
-    "document-generation"
-  ]
-},
-{
-  "ticket_id": "DASH-12214",
-  "lab": "ValleyMed",
-  "module": "document_generation",
-  "status": "resolved",
-  "date_reported": "2026-05-30",
-  "concern_summary": "Standardize how results and reference values are displayed to a specific number of decimal places with trailing zeros (for example, 0.60 instead of 0.6).",
-  "root_cause": "The document template formatting did not enforce a consistent number of decimal places for results and reference ranges.",
-  "actions": [
-    "Navigate to Documents and open the affected result form template.",
-    "Update the formatting logic for numeric result and reference fields to always display the required number of decimal places (including trailing zeros)."
-  ],
-  "solver": "Martin Aniceto",
-  "tags": [
-    "document-generation",
-    "decimal-places",
-    "result-formatting"
-  ]
-},
-{
-  "ticket_id": "DASH-12241",
-  "lab": "Neolab Medical",
-  "module": "patient",
-  "status": "resolved",
-  "date_reported": "2026-05-31",
-  "concern_summary": "Delete patient record.",
-  "root_cause": "Patient record needed to be removed from the patient registry (e.g., wrong entry or duplicate).",
-  "actions": [
-    "Navigate to Patients and search for the specific patient record.",
-    "Use the delete option on the matched patient record to remove it from the system, following any required confirmation steps."
-  ],
-  "solver": "Jeremy Espera",
-  "tags": [
-    "patient-management",
-    "record-deletion"
-  ]
-},
-
-{
-  "ticket_id": "DASH-12211",
-  "lab": "SWIFT",
-  "module": "services",
-  "status": "resolved",
-  "date_reported": "2026-05-31",
-  "concern_summary": "Add Service Fields & Category. Fungal Elements with Service Fields of Budding Yeasts, Pseudohyphae.",
-  "root_cause": "The 'Fungal Elements' category and its related service fields (Budding Yeasts, Pseudohyphae) were not yet configured in Microbiology services.",
-  "actions": [
-    "Navigate to Services and open the Microbiology configuration.",
-    "Add a new category named 'Fungal Elements'.",
-    "Under this category, add service fields for 'Budding Yeasts' and 'Pseudohyphae'."
-  ],
-  "solver": "Martin Aniceto",
-  "tags": [
-    "services",
-    "category-addition",
-    "fungal-elements",
-    "microbiology",
-    "service-fields"
-  ]
-},
   {
-  "ticket_id": "DASH-12295",
-  "lab": "Sky Diagnostic",
-  "module": "products",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "Client requested to add two new packages (SNR CENTRAL SCHOOL OPTION 1 and OPTION 2) with specified prices and test inclusions.",
-  "root_cause": "Requested corporate packages were not yet configured in the products master data for Sky Diagnostic.",
-  "actions": [
-    "Confirm the exact package names, prices, and test inclusions from the client request.",
-    "Navigate to Products and use Add Product to create each missing package for the lab.",
-    "For each new package, set the correct price and include all requested tests under Post-Purchase in the package inclusions."
-  ],
-  "solver": "Gelie Emmanuel",
-  "tags": [
-    "package-creation",
-    "products"
-  ]
-},
+    "ticket_id": "DASH-12195",
+    "lab": "Helpful Gen",
+    "module": "products", 
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "Add and template Thyroid Function CLIA package and related tests as in-house services, with initial price set to 0 PHP since the lab will update pricing in-house.",
+    "root_cause": "Thyroid Function CLIA package and related tests were not yet configured as in-house services and had no defined package price.",
+    "actions": [
+        "Added CLIA versions of the requested tests to the lab's Immuno/Sero services and updated docsgens/templates.",
+        "Updated product templates so these tests now use in-house services instead of send-out.",
+        "Set the Thyroid Function CLIA package price to 0 PHP initially, as per lab instruction that they will update the price in-house."
+    ],
+    "solver": "Martin Julian Aniceto",
+    "tags": [
+        "product-add-update",
+        "thyroid-function",
+        "clia",
+        "in-house-service",
+        "pricing-0-initial"
+    ]
+  },
+  {
+    "ticket_id": "DASH-12196",
+    "lab": "Sierra Makiling",
+    "module": "document_generation",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "Receipt are being printed on whole bond paper",
+    "root_cause": "The receipts document did not have the correct page setup for receipt printing.",
+    "actions": [
+        "In Documents -> Page Setup, set Height and Width to the appropriate size. Ask around for the specific dimensions.",
+        "For receipt printing, set the Height to 279.4 mm and width to 80 mm"
+    ],
+    "solver": "Adrian Adajar",
+    "tags": [
+        "page-setup",
+        "receipt-printing",
+        "document-generation"
+    ]
+  },
+    {
+    "ticket_id": "DASH-12213",
+    "lab": "OMNIA",
+    "module": "document_generation",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "Add a Standard X-Ray Format Result [Can Copy in OG Test-Lab]",
+    "root_cause": "Go to documents, Patient Service, (Not Patient Services ah), and search for X-ray, and create a duplicate template based on the client's request.",
+    "actions": [
+        "Go to documents, Patient Service, (Not Patient Services ah), and search for X-ray, and created a duplicate template based on the client's request."
+    ],
+    "solver": "Steven Flogio",
+    "tags": [
+        "add_template",
+        "x-ray",
+        "document-generation"
+    ]
+  },
+  {
+    "ticket_id": "DASH-12214",
+    "lab": "ValleyMed",
+    "module": "document_generation",
+    "status": "resolved",
+    "date_reported": "2026-05-30",
+    "concern_summary": "In result form Hematology, would it be possible that results and references be standardized to two decimal places with trailing zeros retained. For example 0.60 instaed of 0.6",
+    "root_cause": "null",
+    "actions": [
+        "In Documents -> Hematology, simply edit the results and edit the code to have desired decimal places."
+    ],
+    "solver": "Martin Aniceto",
+    "tags": [
+        "document-generation",
+        "decimal-places",
+        "hematology",
+        "result-formatting"
+    ]
+  },
+    {
+    "ticket_id": "DASH-12241",
+    "lab": "Neolab Medical",
+    "module": "patient",
+    "status": "resolved",
+    "date_reported": "2026-05-31",
+    "concern_summary": "Delete patient record.",
+    "root_cause": "null",
+    "actions": [
+        "Go to Patients -> Search for patient -> Delete patient record"
+    ],
+    "solver": "Jeremy Espera",
+    "tags": [
+        "patient-management",
+        "record-deletion"
+    ]
+  },
+
+  {
+    "ticket_id": "DASH-12211",
+    "lab": "SWIFT",
+    "module": "services",
+    "status": "",
+    "date_reported": "2026-05-31",
+    "concern_summary": "Add Service Fields & Category. Fungal Elements with Service Fields of Budding Yeasts, Pseudohyphae.",
+    "root_cause": "",
+    "actions": [
+        "Went to Services -> Microbiology -> Add Category Fungal Elements with Service Fields of Budding Yeasts, Pseudohyphae."
+    ],
+    "solver": "Martin Aniceto",
+    "tags": [
+        "services",
+        "category-addition",
+        "fungal-elements",
+        "microbiology",
+        "service-fields"
+    ]
+  },
+  {
+    "ticket_id": "DASH-12295",
+    "lab": "Sky Diagnostic",
+    "module": "products",
+    "status": "resolved",
+    "date_reported": "2026-06-02",
+    "concern_summary": "Client requested to add two new packages (SNR CENTRAL SCHOOL OPTION 1 and OPTION 2) with specified prices and test inclusions.",
+    "root_cause": "Requested corporate packages were not yet configured in the products master data for Sky Diagnostic.",
+    "actions": [
+        "Navigated to Products -> Add Product in the LIS configuration.",
+        "Created product 'SNR CENTRAL SCHOOL OPTION 1' with price set to FREE and inclusions: Consultation, Chest X-ray, CBC, Fecalysis, Urinalysis, FBS, Lipid Profile.",
+        "Created product 'SNR CENTRAL SCHOOL OPTION 2' with price set to 1,200 and inclusions: BUN, Creatinine, BUA, SGPT, SGOT, Alkaline Phosphatase, Sodium, Potassium, 12-L ECG.",
+        "Verified both packages are selectable and correctly priced with complete inclusions under Sky Diagnostic."
+    ],
+    "solver": "Gelie Emmanuel",
+    "tags": [
+        "package-creation",
+        "products"
+    ]
+  },
   {
     "ticket_id": "DASH-12344",  
     "lab": "My Hub Cares",
@@ -167,10 +164,9 @@
     "concern_summary": "Client requested the creation of a new category named 'Hepa Profile' under the Clinical Chemistry module.",
     "root_cause": "",
     "actions": [
-        "Navigate to Services, and click the Service.",
-        "Either add or modify a Service Field or Category based on the client's request.",
-        "Make sure to configure the appropriate units and reference ranges for the parameters if needed.",
-        "If you are having trouble saving a Service Field, ask a supervisor for the 'trick to save the Service Field Category.'"
+        "Navigated to Services -> Clinical Chemistry in the LIS configuration.",
+        "Added a new category named 'Hepa Profile' under Clinical Chemistry service field settings.",
+        "Configured the appropriate units and reference ranges for parameters included in the Hepa Profile category."
         ],
     "solver": "Clyde Calderon",
     "tags": [
@@ -203,7 +199,7 @@
     ]
   },
     {
-    "ticket_id": "DASH-12393",
+    "ticket_id": "DASH-",
     "lab": "Sky Diagnostics",
     "module": "orders",
     "status": "resolved",
@@ -223,323 +219,7 @@
         "permissions",
         "patient-services"
     ]
-  },
-    {
-    "ticket_id": "DASH-12739",
-    "lab": "AIC Health Hub",
-    "module": "documents",
-    "status": "",
-    "date_reported": "June 11, 2026",
-    "concern_summary": "Add watermark",
-    "root_cause": "DOH watermark not appearing",
-    "actions": [
-        "Navigate to Documents, Select affected document, and find a 'document files' mini icon somewhere on the right",
-        "Open that icon, and use the ID of DOH watermark into a {{ }} in the document." 
-    ],
-    "solver": "Steven Flogio",
-    "tags": [
-        "document-generation",
-        "document-files",
-        "mini-icon",
-        "watermark"
-    ]
-  },
-    {
-    "ticket_id": "DASH-12749",
-    "lab": "OWSW Makati",
-    "module": "services",
-    "status": "",
-    "date_reported": "June 11, 2026",
-    "concern_summary": "Remove availed service",
-    "root_cause": "null",
-    "actions": [
-        "Navigate to patients, and then select px name, then select Plans, and either set the plan as 'active' or 'inactive'",
-        "As of June 2026, we cannot remove the plan, Either check for updates or raise to Help or supervisor."
-    ],
-    "solver": "Hien Prieto",
-    "tags": [
-        "patients",
-        "plans",
-        "active",
-        "inactive",
-        "service-removal"
-    ]
-  },
-    {
-    "ticket_id": "DASH-12739",
-    "lab": "AIC - Lipa",
-    "module": "dev-rim",
-    "status": "",
-    "date_reported": "June 11, 2026",
-    "concern_summary": "TG results not transmitting from machine, evident in 2 px services",
-    "root_cause": "machine issue",
-    "actions": [
-        "Raised to Dev-Rim"
-    ],
-    "solver": "Raised to Dev-Rim",
-    "tags": [
-        "dev-rim"
-    ]
-  },
-{
-  "ticket_id": "DASH-12300",
-  "lab": "ValleyMed",
-  "module": "documents",
-  "status": "resolved",
-  "date_reported": "2026-06-01",
-  "concern_summary": "Signatory for Dr. Aldrin Mayon needed to appear on the left side while the other signatories remained on the right, causing signatory alignment issues in the document.",
-  "root_cause": "Signatory layout for Dr. Aldrin Mayon was not configured as requested in the document signatories settings, leading to misaligned signatory positions.",
-  "actions": [
-    "Navigate to the affected Document, which is could be Signatories",
-    "Adjust the signatory of the affected Doctor in the document"
-  ],
-  "solver": "Hien Prieto",
-  "tags": [
-    "document-generation",
-    "signatories"
-  ]
-},
-{
-  "ticket_id": "DASH-12301",
-  "lab": "Upcare Davao",
-  "module": "documents",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "Signature is overlapping and blocking the text on the document.",
-  "root_cause": "Signatory layout configuration caused the signature to overlap with body text.",
-  "actions": [
-    "Navigate to the affected document's configuration under Documents or Signatories.",
-    "Adjust the signatory layout so signatures do not overlap with the document text."
-  ],
-  "solver": "Hien Prieto",
-  "tags": [
-    "document-generation",
-    "signatories"
-  ]
-},
-    {
-  "ticket_id": "DASH-12302",
-  "lab": "Medgo",
-  "module": "documents",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "Result prompt alignment on the document is incorrect.",
-  "root_cause": "Document alignment configuration for result prompts was not set as requested.",
-  "actions": [
-    "Navigate to Documents and open the affected template.",
-    "Edit the alignment of the requested result values."
-  ],
-  "solver": "Terenz Flores",
-  "tags": [
-    "document-generation",
-    "alignment"
-  ]
-},
-{
-"ticket_id": "DASH-12303",
-"lab": "OWSW",
-"module": "services",
-"status": "resolved",
-"date_reported": "2026-06-02",
-"concern_summary": "Requested to add 'RF Microneedling' as a variant under Session Notes.",
-"root_cause": "The 'RF Microneedling' option was not yet configured as a variant in the Session Notes service.",
-"actions": [
-"Navigate to Services and open Session Notes.",
-"Use the Variant button and add 'RF Microneedling' as a variant."
-],
-"solver": "Hien Prieto",
-"tags": [
-"services",
-"add-variant"
-]
-},
-{
-"ticket_id": "DASH-12304",
-"lab": "Ashrey",
-"module": "documents",
-"status": "resolved",
-"date_reported": "2026-06-02",
-"concern_summary": "Ultrasound document is generating too many extra blank/white pages.",
-"root_cause": "Ultrasound document template formatting caused excessive whitespace and extra page breaks.",
-"actions": [
-"Navigate to Documents and open the affected ultrasound template.",
-"Adjust the document layout/formatting to remove unnecessary whitespace and extra page breaks."
-],
-"solver": "Hien Prieto",
-"tags": [
-"document",
-"white-page"
-]
-},
-{
-"ticket_id": "DASH-12305",
-"lab": "OWSW Franca",
-"module": "patient_service",
-"status": "resolved",
-"date_reported": "2026-06-02",
-"concern_summary": "Some patient services statuses sometimes do not update as expected.",
-"root_cause": "Handled and fixed by the development team; specific root cause not documented in this ticket.",
-"actions": [
-"Escalate similar intermittent status issues on patient services to the development team with affected examples."
-],
-"solver": "Philly Tan",
-"tags": [
-"patient-service",
-"dev"
-]
-},
-{
-"ticket_id": "DASH-12307",
-"lab": "Rosario Medical Center",
-"module": "documents",
-"status": "resolved",
-"date_reported": "2026-06-02",
-"concern_summary": "Release date field in the document is missing.",
-"root_cause": "The release date is only populated when the patient service status is marked as completed; when the status is collected, no release date is shown.",
-"actions": [
-"For missing release date issues, check the Patient Service status on the affected case.",
-"If the document should show a release date, ensure the patient service is marked as completed rather than collected."
-],
-"solver": "Johann De Guzman",
-"tags": [
-"document-generation"
-]
-},
-{
-  "ticket_id": "DASH-12308",
-  "lab": "Prima",
-  "module": "signatories",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "Requested to add a new signatory.",
-  "root_cause": "The required signatory was not yet configured under Signatories.",
-  "actions": [
-    "Navigate to Signatories.",
-    "Add the requested signatory."
-  ],
-  "solver": "Gelie Emmanuel",
-  "tags": [
-    "signatories"
-  ]
-},
-{
-  "ticket_id": "DASH-12309",
-  "lab": "Mediko Kapitolyo",
-  "module": "documents",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "Release date field in the document is missing.",
-  "root_cause": "The docsgen configuration for Patient Info did not correctly include or reference the release date field.",
-  "actions": [
-    "Modify the Docsgen configuration for the patient info section to include the correct release date field."
-  ],
-  "solver": "Johann De Guzman",
-  "tags": [
-    "document-generation"
-  ]
-},
-{
-  "ticket_id": "DASH-12310",
-  "lab": "Gentri Med",
-  "module": "queue",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "Encoded information is not appearing in the queueing view.",
-  "root_cause": "Results were being entered on the collection step instead of through queue tasks, so they did not appear as expected in the queue.",
-  "actions": [
-    "Advise users to input results in the queue tasks instead of on the collection step for cases where data must appear in queueing."
-  ],
-  "solver": "Alain Marcus Leyva",
-  "tags": [
-    "queue-tasks"
-  ]
-},
-{
-  "ticket_id": "DASH-12311",
-  "lab": "HealthBit",
-  "module": "documents",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "No tests are listed under the patient service package in the document; client does not see the package tests.",
-  "root_cause": "The document logic did not iterate over the tests in the patient service package, so package items were not rendered.",
-  "actions": [
-    "Update the document template logic to loop through the package's tests (e.g., using a for-loop) and render each test under the patient service package."
-  ],
-  "solver": "Alain Marcus Leyva",
-  "tags": [
-    "document-generation",
-    "logic"
-  ]
-},
-{
-  "ticket_id": "DASH-12312",
-  "lab": "Upcare Caloocan",
-  "module": "cashier",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "Requested to add a new cashier.",
-  "root_cause": "The required cashier account was not yet configured under Partners and Cashiers.",
-  "actions": [
-    "Navigate to Partners.",
-    "Create a new Partner and configure the corresponding Cashier entry."
-  ],
-  "solver": "Alain Marcus Leyva",
-  "tags": [
-    "cashier",
-    "partners"
-  ]
-},
-    {
-    "ticket_id": "",
-    "lab": "",
-    "module": "",
-    "status": "",
-    "date_reported": "",
-    "concern_summary": "",
-    "root_cause": "",
-    "actions": [
-        ""
-    ],
-    "solver": "",
-    "tags": [
-        ""
-    ]
-  },
-    {
-    "ticket_id": "",
-    "lab": "",
-    "module": "",
-    "status": "",
-    "date_reported": "",
-    "concern_summary": "",
-    "root_cause": "",
-    "actions": [
-        ""
-    ],
-    "solver": "",
-    "tags": [
-        ""
-    ]
-  },
-  {
-  "ticket_id": "DASH-12365",
-  "lab": "BMCDC Lanang Lab",
-  "module": "ledger-groups",
-  "status": "resolved",
-  "date_reported": "2026-06-02",
-  "concern_summary": "add charge Ledger group - BHI - MOBILE / POLYFOAM RGC INTERNATIONAL",
-  "root_cause": "The required charge ledger for BHI - MOBILE / POLYFOAM RGC INTERNATIONAL was not yet configured under the appropriate ledger group.",
-  "actions": [
-    "Navigate to Ledger Groups and open the relevant ledger group.",
-    "Within the selected ledger group, choose the target ledger and add the missing ledger entry for BHI - MOBILE / POLYFOAM RGC INTERNATIONAL."
-  ],
-  "solver": "Steven Flogio",
-  "tags": [
-    "ledger-groups",
-    "ledger",
-    "add-ledger"
-  ]
-}
+  }
 ]
 
 
