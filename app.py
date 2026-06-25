@@ -4,13 +4,20 @@ from typing import List, Dict, Any, Optional
 import numpy as np
 from flask import Flask, request, render_template
 from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
+#from sklearn.metrics.pairwise import cosine_similarity
 
 # --- Configuration ---
 MODEL_NAME = "all-MiniLM-L6-v2"
 JSON_PATH = "issue_cards.json"
 TOP_K = 3
 MIN_SCORE = 0.40
+
+def cosine_similarity(vec1, vec2):
+    """Calculates cosine similarity using pure Numpy (no sklearn needed)."""
+    dot_product = np.dot(vec1, vec2.T)
+    norm_vec1 = np.linalg.norm(vec1)
+    norm_vec2 = np.linalg.norm(vec2, axis=1)
+    return dot_product / (norm_vec1 * norm_vec2 + 1e-8)
 
 app = Flask(__name__)
 
@@ -85,8 +92,7 @@ def search_cards(query: str, cards: List[Dict], embeddings: np.ndarray) -> List[
 print("Loading ML model and computing embeddings... (This may take a moment)")
 model = SentenceTransformer(MODEL_NAME)
 cards = load_cards(JSON_PATH)
-texts = [build_search_text(card) for card in cards]
-card_embeddings = model.encode(texts, convert_to_numpy=True) if cards else np.array([])
+card_embeddings = np.load('card_embeddings.npy')
 print(f"Initialization complete. Loaded {len(cards)} issue cards.")
 
 
