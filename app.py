@@ -92,7 +92,8 @@ def search_cards(query: str, cards: List[Dict], embeddings: np.ndarray) -> List[
 print("Loading ML model and computing embeddings... (This may take a moment)")
 model = SentenceTransformer(MODEL_NAME)
 cards = load_cards(JSON_PATH)
-card_embeddings = np.load('card_embeddings.npy')
+texts = [build_search_text(card) for card in cards]
+card_embeddings = model.encode(texts, convert_to_numpy=True) if cards else np.array([])
 print(f"Initialization complete. Loaded {len(cards)} issue cards.")
 
 
