@@ -4,13 +4,14 @@ from typing import List, Dict, Any, Optional
 import numpy as np
 from flask import Flask, request, render_template
 from sentence_transformers import SentenceTransformer
+import re
 #from sklearn.metrics.pairwise import cosine_similarity
 
 # --- Configuration ---
 MODEL_NAME = "all-MiniLM-L6-v2"
 JSON_PATH = "issue_cards.json"
 TOP_K = 3
-MIN_SCORE = 0.40
+MIN_SCORE = 0.20
 
 def cosine_similarity(vec1, vec2):
     """Calculates cosine similarity using pure Numpy (no sklearn needed)."""
@@ -42,6 +43,14 @@ def build_search_text(card: Dict[str, Any]) -> str:
         f"Tags: {tags}",
     ]
     return "\n".join(parts)
+
+def extract_concern(query_text: str) -> str:
+    """Looks for 'Concern:' in the pasted ticket and grabs everything after it.
+    Falls back to the raw query text if the label isn't found."""
+    match = re.search(r'Concern:\s*(.*)', query_text, re.IGNORECASE | re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return query_text.strip()
 
 
 def load_cards(path: str) -> List[Dict[str, Any]]:
@@ -110,16 +119,21 @@ def home():
     if request.method == 'POST':
         query = request.form.get('query', '').strip()
         if query:
-            results = search_cards(query, cards, card_embeddings)
-            
-            if results:
-                best_card = results[0]['card']
-                best_score = results[0]['score']
+            clean_query = extract_concern(query)
+
+            if not clean_query:
+                no_match_message = "Could not extract a concern from the input."
             else:
-                no_match_message = (
-                    "No sufficient match was found. "
-                    "Please add more system-related tickets to the database to improve search results."
-                )
+                results = search_cards(clean_query, cards, card_embeddings)
+
+                if results:
+                    best_card = results[0]['card']
+                    best_score = results[0]['score']
+                else:
+                    no_match_message = (
+                        "No sufficient match was found. "
+                        "Please add more system-related tickets to the database to improve search results."
+                    )
 
     return render_template(
         'index.html',

@@ -44,7 +44,7 @@
   {
     "ticket_id": "DASH-12196",
     "lab": "Sierra Makiling",
-    "module": "document_generation",
+    "module": "documents",
     "status": "resolved",
     "date_reported": "2026-05-30",
     "concern_summary": "Receipt are being printed on whole bond paper",
@@ -63,7 +63,7 @@
     {
     "ticket_id": "DASH-12213",
     "lab": "OMNIA",
-    "module": "document_generation",
+    "module": "documents",
     "status": "resolved",
     "date_reported": "2026-05-30",
     "concern_summary": "Add a Standard X-Ray Format Result [Can Copy in OG Test-Lab]",
@@ -81,7 +81,7 @@
   {
     "ticket_id": "DASH-12214",
     "lab": "ValleyMed",
-    "module": "document_generation",
+    "module": "documents",
     "status": "resolved",
     "date_reported": "2026-05-30",
     "concern_summary": "In result form Hematology, would it be possible that results and references be standardized to two decimal places with trailing zeros retained. For example 0.60 instaed of 0.6",
@@ -97,24 +97,6 @@
         "result-formatting"
     ]
   },
-    {
-    "ticket_id": "DASH-12241",
-    "lab": "Neolab Medical",
-    "module": "patient",
-    "status": "resolved",
-    "date_reported": "2026-05-31",
-    "concern_summary": "Delete patient record.",
-    "root_cause": "null",
-    "actions": [
-        "Go to Patients -> Search for patient -> Delete patient record"
-    ],
-    "solver": "Jeremy Espera",
-    "tags": [
-        "patient-management",
-        "record-deletion"
-    ]
-  },
-
   {
     "ticket_id": "DASH-12211",
     "lab": "SWIFT",
@@ -124,7 +106,7 @@
     "concern_summary": "Add Service Fields & Category. Fungal Elements with Service Fields of Budding Yeasts, Pseudohyphae.",
     "root_cause": "",
     "actions": [
-        "Navigate to Services, select a Service, Add a the requested Category and Service fields",
+        "Navigate to Services, select a Service, Add the requested Category and Service fields",
         "Input the appropriate units and reference ranges for the new service fields."
     ],
     "solver": "Martin Aniceto",
@@ -134,26 +116,6 @@
         "fungal-elements",
         "microbiology",
         "service-fields"
-    ]
-  },
-  {
-    "ticket_id": "DASH-12295",
-    "lab": "Sky Diagnostic",
-    "module": "products",
-    "status": "resolved",
-    "date_reported": "2026-06-02",
-    "concern_summary": "Client requested to add two new packages (SNR CENTRAL SCHOOL OPTION 1 and OPTION 2) with specified prices and test inclusions.",
-    "root_cause": "Requested corporate packages were not yet configured in the products master data for Sky Diagnostic.",
-    "actions": [
-        "Navigated to Products -> Add Product in the LIS configuration.",
-        "Created product 'SNR CENTRAL SCHOOL OPTION 1' with price set to FREE and inclusions: Consultation, Chest X-ray, CBC, Fecalysis, Urinalysis, FBS, Lipid Profile.",
-        "Created product 'SNR CENTRAL SCHOOL OPTION 2' with price set to 1,200 and inclusions: BUN, Creatinine, BUA, SGPT, SGOT, Alkaline Phosphatase, Sodium, Potassium, 12-L ECG.",
-        "Verified both packages are selectable and correctly priced with complete inclusions under Sky Diagnostic."
-    ],
-    "solver": "Gelie Emmanuel",
-    "tags": [
-        "package-creation",
-        "products"
     ]
   },
   {
@@ -180,7 +142,7 @@
   {
     "ticket_id": "DASH-12346",
     "lab": "St. Vincent",
-    "module": "document_generation",
+    "module": "documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "X-ray image not showing in generated document despite using the FILE UPLOAD template placeholder.",
@@ -237,7 +199,10 @@
   "solver": "Hien Prieto",
   "tags": [
     "document-generation",
-    "signatories"
+    "signatories",
+    "edit-signatory",
+    "edit-signatories",
+    "overlapping-signature"
   ]
 },
 {
@@ -342,7 +307,9 @@
   ],
   "solver": "Gelie Emmanuel",
   "tags": [
-    "signatories"
+    "signatories",
+    "add-signatory",
+    "add-signatories"
   ]
 },
 {
@@ -428,29 +395,10 @@
   "solver": "Gelie Emmanuel",
   "tags": [
     "package-creation",
-    "products"
-  ]
-},
-{
-  "ticket_id": "DASH-12211",
-  "lab": "SWIFT",
-  "module": "services",
-  "status": "resolved",
-  "date_reported": "2026-05-31",
-  "concern_summary": "Add Service Fields & Category. Fungal Elements with Service Fields of Budding Yeasts, Pseudohyphae.",
-  "root_cause": "The 'Fungal Elements' category and its related service fields (Budding Yeasts, Pseudohyphae) were not yet configured in Microbiology services.",
-  "actions": [
-    "Navigate to Services and open the Microbiology configuration.",
-    "Add a new category named 'Fungal Elements'.",
-    "Under this category, add service fields for 'Budding Yeasts' and 'Pseudohyphae'."
-  ],
-  "solver": "Martin Aniceto",
-  "tags": [
-    "services",
-    "category-addition",
-    "fungal-elements",
-    "microbiology",
-    "service-fields"
+    "products",
+    "add-product",
+    "new-package",
+    "new-packages"
   ]
 },
 {
@@ -468,13 +416,17 @@
   "solver": "Jeremy Espera",
   "tags": [
     "patient-management",
-    "record-deletion"
+    "record-deletion",
+    "delete-patient",
+    "delete-record",
+    "duplicate",
+    "delete-patient-record"
   ]
 },
 {
   "ticket_id": "DASH-12214",
   "lab": "ValleyMed",
-  "module": "document_generation",
+  "module": "documents",
   "status": "resolved",
   "date_reported": "2026-05-30",
   "concern_summary": "Standardize how results and reference values are displayed to a specific number of decimal places with trailing zeros (for example, 0.60 instead of 0.6).",
@@ -487,7 +439,8 @@
   "tags": [
     "document-generation",
     "decimal-places",
-    "result-formatting"
+    "result-formatting",
+    "add-zeroes"
   ]
 },
 {
@@ -505,6 +458,7 @@
   "solver": "Steven Flogio",
   "tags": [
     "ledger-groups",
+    "ledger-group",
     "ledger",
     "add-ledger"
   ]
@@ -526,7 +480,9 @@
   "tags": [
     "document-generation",
     "document-files",
-    "watermark"
+    "watermark",
+    "watermark-not-appearing",
+    "add-watermark"
   ]
 },
 {
@@ -547,13 +503,14 @@
     "patients",
     "plans",
     "active",
-    "inactive"
+    "inactive",
+    "remove-availed-service"
   ]
 },
 {
   "ticket_id": "DASH-12980",
   "lab": "ValleyMed",
-  "module": "dev-rim",
+  "module": "machine",
   "status": "open",
   "date_reported": "2026-06-11",
   "concern_summary": "TG results not transmitting from machine, evident in 2 px services",
@@ -564,7 +521,9 @@
   ],
   "solver": "Terenz Flores",
   "tags": [
-    "Dev-Rim"
+    "Dev-Rim",
+    "machine-issue",
+    "result-not-transmitting"
   ]
 },
 {
@@ -582,7 +541,10 @@
   "solver": "Hien Prieto",
   "tags": [
     "document-generation",
-    "signatories"
+    "signatories",
+    "edit-signatory",
+    "edit-signatories",
+    "signatory-layout"
   ]
 }
 
