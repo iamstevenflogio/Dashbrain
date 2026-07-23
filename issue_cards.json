@@ -546,7 +546,678 @@
     "edit-signatories",
     "signatory-layout"
   ]
+},
+{
+  "ticket_id": "DASH-12313",
+  "lab": "1421 Medical Services - Taguig",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-06-02",
+  "concern_summary": "Fix formatting of Radiographic Report",
+  "root_cause": "The Radiographic Report document template formatting did not match the client’s requested layout.",
+  "actions": [
+    "Navigate to Documents and locate the affected Radiographic Report template.",
+    "Apply the formatting updates requested by the client within the template (layout, spacing, or field positioning as needed)."
+  ],
+  "solver": "Jero Hilario",
+  "tags": [
+    "document-generation",
+    "radiographic-report",
+    "documents"
+  ]
+},
+{
+  "ticket_id": "DASH-12314",
+  "lab": "ValleyMed",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-06-02",
+  "concern_summary": "Radiologists Name is not visible on document",
+  "root_cause": "The radiologist's signatory was not correctly referenced or configured in the document template or its component document.",
+  "actions": [
+    "Navigate to the affected document template under Documents.",
+    "Either code/reference the radiologist's signatory directly in the template or review the linked component document to ensure the correct signatory is used."
+  ],
+  "solver": "Gelie Emmanuel",
+  "tags": [
+    "document-generation",
+    "signatories",
+    "radiologist"
+  ]
+},
+{
+  "ticket_id": "DASH-12315",
+  "lab": "SFUC",
+  "module": "products",
+  "status": "resolved",
+  "date_reported": "2026-06-02",
+  "concern_summary": "Add Product",
+  "root_cause": "The requested product was not yet configured in the products master data for SFUC.",
+  "actions": [
+    "Navigate to Products and use Add Product.",
+    "Input the product price, assign the store, and configure the requested Patient Service under Post-Purchase."
+  ],
+  "solver": "Louise Tobias",
+  "tags": [
+    "add-product"
+  ]
+},
+{
+  "ticket_id": "DASH-12316",
+  "lab": "Klinika",
+  "module": "queue",
+  "status": "resolved",
+  "date_reported": "2026-06-02",
+  "concern_summary": "Forbidden Error when completing Queue",
+  "root_cause": "Handled by the solver; specific root cause not documented in this ticket.",
+  "actions": [
+    "Refer to solver (Alain Marcus Leyva) for the resolution details and any required follow-up steps."
+  ],
+  "solver": "Alain Marcus Leyva",
+  "tags": [
+    "queue"
+  ]
+},
+{
+  "ticket_id": "DASH-12317",
+  "lab": "Upcare Caloocan",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-06-02",
+  "concern_summary": "Fix the Signature for Urinalysis and Fecalysis",
+  "root_cause": "The signatories for Urinalysis and Fecalysis were incorrect or outdated in the document templates.",
+  "actions": [
+    "Navigate to Documents and locate the Urinalysis and Fecalysis templates.",
+    "Edit the associated signatories and update them to the correct signatures as requested."
+  ],
+  "solver": "Clyde Calderon",
+  "tags": [
+    "documents",
+    "signatories",
+    "edit"
+  ]
+},
+{
+  "ticket_id": "DASH-12318",
+  "lab": "Abundant Grace of God Maternity Center (AGGMC)",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-06-02",
+  "concern_summary": "Previous prenatal records contain comments, but these comments are not appearing in the Summary Report.",
+  "root_cause": "The Summary Report document template was not configured to include comments from previous prenatal records.",
+  "actions": [
+    "Navigate to Documents and open the affected Summary Report template.",
+    "Edit the template to include the comments field from previous prenatal records so they appear in the report."
+  ],
+  "solver": "Jero Hilario",
+  "tags": [
+    "document-generation"
+  ]
+},
+{
+  "ticket_id": "DASH-12324",
+  "lab": "MediLab",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-06-02",
+  "concern_summary": "Adjust the normal value and unit of FT4 under the immunology and serology service.",
+  "root_cause": "The FT4 service under immunology and serology had incorrect or outdated normal value and unit settings.",
+  "actions": [
+    "Navigate to Services and open the immunology and serology section.",
+    "Select the FT4 service and adjust the normal value and unit fields as requested."
+  ],
+  "solver": "Gelie Emmanuel",
+  "tags": [
+    "services",
+    "edit",
+    "FT4"
+  ]
+},
+{
+  "ticket_id": "DASH-13939",
+  "lab": "Healthbit",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-13",
+  "concern_summary": "Update ref range name\ncurrent ref range for Hemoglobin in Hematology is showing \"female FEMALE\"",
+  "root_cause": "The reference range name for Hemoglobin in Hematology was incorrectly duplicated/misformatted as \"female FEMALE\".",
+  "actions": [
+    "Navigate to Services and open the Hematology service.",
+    "Select the Hemoglobin service field, locate the affected reference range item, and update the reference range name to the correct value."
+  ],
+  "solver": "Trisha Harun",
+  "tags": [
+    "services",
+    "service field",
+    "reference-range"
+  ]
+},
+{
+  "ticket_id": "DASH-13915",
+  "lab": "Kairos Health Medical Group (Kapitolyo)",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-13",
+  "concern_summary": "Signatories and names are not showing in dropdown",
+  "root_cause": "Member or member group permissions did not have read access enabled for the relevant services, so names/signatories did not appear in the dropdown.",
+  "actions": [
+    "Navigate to Members and open Member Groups.",
+    "Select the affected email or member group.",
+    "Scroll to the Services section and enable the Read checkbox for the relevant services so signatories and names appear in the dropdown."
+  ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "member",
+    "member-groups",
+    "checkbox",
+    "signatories-not-showing"
+  ]
+},
+{
+  "ticket_id": "DASH-13970",
+  "lab": "RGO Cavite",
+  "module": "patient_service",
+  "status": "resolved",
+  "date_reported": "2026-07-14",
+  "concern_summary": "field is not showing in the px service",
+  "root_cause": "The related product was not linked to the correct service item on Post Purchase, and the requested field was not added to the patient service layout.",
+  "actions": [
+    "Under Products, open the related product and ensure the correct service item is selected in the Post Purchase configuration.",
+    "Go to the affected patient service, click Field on the middle right panel, and add the requested field to the service."
+  ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "patient-service",
+    "edit-field",
+    "field-not-showing"
+  ]
+},
+{
+  "ticket_id": "DASH-13915-temp",
+  "lab": "RG Medical",
+  "module": "partners",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "User is unable to save in partners (for APE results).",
+  "root_cause": "User was receiving a 'forbidden' error when trying to save APE results under Partners due to missing or incomplete permissions.",
+  "actions": [
+    "Navigated to Partners, went to the user account, and checked in Scopes if necessary checkboxes are ticked."
+  ],
+  "solver": "Terenz Flores",
+  "tags": [
+    "partners",
+    "permissions",
+    "forbidden-error",
+    "ape-results"
+  ]
+},
+{
+  "ticket_id": "DASH-14194",
+  "lab": "RGO Parañaque",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "Hematocrit value in decimal form",
+  "root_cause": "The document template and/or linked service field formatting was set to display hematocrit in decimal form even when the input was a whole number.",
+  "actions": [
+    "Navigate to affected Document and adjust decimal value. Check related Service field if necessary."
+  ],
+  "solver": "Clyde Calderon",
+  "tags": [
+    "document-generation",
+    "radiology-report",
+    "decimal-formatting"
+  ]
+},
+{
+  "ticket_id": "DASH-14193",
+  "lab": "Healthbridge",
+  "module": "partner",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "Client-HR user added as admin cannot download employee results in the PRA system",
+  "root_cause": "The partner did not have any documents attached, so download options were not available to the admin user.",
+  "actions": [
+    "There might be no Document attached to the partner."
+  ],
+  "solver": "Hien Prieto",
+  "tags": [
+    "partner",
+    "documents",
+    "download-access"
+  ]
+},
+{
+  "ticket_id": "DASH-14192",
+  "lab": "Sky Diagnostic",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "add eGFR test on docs",
+  "root_cause": "The requested eGFR test and reference range were not yet configured as a Service Field and were not present on the Clinical Chemistry result document.",
+  "actions": [
+    "Navigate to Document and add requested inputs. Also, add the requested item as a Service Field under Services first if you haven't."
+  ],
+  "solver": "Johann De Guzman",
+  "tags": [
+    "documents",
+    "services",
+    "service-field",
+    "egfr"
+  ]
+},
+{
+  "ticket_id": "DASH-14192",
+  "lab": "Sky Diagnostic",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "add eGFR test on docs",
+  "root_cause": "The requested eGFR test and reference range were not yet configured as a Service Field and were not present on the Clinical Chemistry result document.",
+  "actions": [
+    "Navigate to Document and add requested inputs. Make sure to add the requested item as a Service Field under Services first if you haven't."
+  ],
+  "solver": "Johann De Guzman",
+  "tags": [
+    "documents",
+    "services",
+    "service-field",
+    "egfr"
+  ]
+},
+{
+  "ticket_id": "DASH-14197",
+  "lab": "Valulife",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "Edit normal val of PSA on docs",
+  "root_cause": "The normal value for PSA on the Tumor Markers document did not match the requested format.",
+  "actions": [
+    "Navigate to affected Document, and apply requested change."
+  ],
+  "solver": "Louise Tobias",
+  "tags": [
+    "documents",
+    "normal-value",
+    "psa"
+  ]
+},
+{
+  "ticket_id": "CS-177",
+  "lab": "TheraspinePlus",
+  "module": "patients",
+  "status": "open",
+  "date_reported": "2026-07-21",
+  "concern_summary": "Unable to merge patients in Beta",
+  "root_cause": "Merging patients is not currently supported in the Beta environment.",
+  "actions": [
+    "Raise to devs, not possible as of 2026-07-21."
+  ],
+  "solver": "Boss Philly",
+  "tags": [
+    "merge-patients",
+    "beta-environment",
+    "feature-not-available",
+    "escalated-to-devs"
+  ]
+},
+{
+  "ticket_id": "DASH-14198",
+  "lab": "ProHealth",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "Service fields not present on patient service",
+  "root_cause": "The necessary service fields were not yet configured on the underlying service, so they did not appear on the patient service.",
+  "actions": [
+    "Navigate to Service, look for affected service, and add the necessary service fields."
+  ],
+  "solver": "Johann de Guzman",
+  "tags": [
+    "services",
+    "service-fields",
+    "patient-service"
+  ]
+},
+{
+  "ticket_id": "DASH-12955",
+  "lab": "E. Asuncion",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-06-18",
+  "concern_summary": "Remarks not appearing on documents",
+  "root_cause": "Remarks fields were not properly configured or mapped on the affected documents.",
+  "actions": [
+    "Navigated to Documents, apply change, and save."
+  ],
+  "solver": "Clyde Calderon",
+  "tags": [
+    "documents",
+    "remarks",
+    "document-generation"
+  ]
+},
+{
+  "ticket_id": "DASH-XXXX",
+  "lab": "ValleyMed",
+  "module": "products",
+  "status": "resolved",
+  "date_reported": "2026-07-21",
+  "concern_summary": "Doctors are unable to add a product or procedure under Outpatient Request/Order because the option is disabled.",
+  "root_cause": "The doctor member group did not have sufficient Products permissions in Scopes, so the option to add products/procedures was disabled.",
+  "actions": [
+    "Navigate to Products, look for the member group, and go to Scopes, and tick the necessary permission."
+  ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "products",
+    "member-group",
+    "scopes",
+    "permissions"
+  ]
+},
+{
+  "ticket_id": "DASH-14219",
+  "lab": "Promed",
+  "module": "Reference Range Adjustments",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The lab wants to add new reference ranges",
+  "root_cause": "There are new reference ranges for the tests within the Clinical Chemistry Service",
+  "actions": [
+    "Navigate to Services within the lab settings, then find the service entitled Clinical Chemistry.",
+    "Within that service find the service fields stated by the lab that is in need of additional reference ranges.",
+    "You can then click the corresponding reference range items indicated by a '+' or a number to add this reference ranges."
+  ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "reference-range",
+    "service-field",
+    "services"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14220",
+  "lab": "One Health Medical",
+  "module": "Reference Range Adjustments",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The lab wants to update an existing reference range",
+  "root_cause": "The laboratory currently has a new reference range for the test entitled Total Cholesterol (TC) and wants to update the reference range for it.",
+  "actions": [
+    "Navigate to Services within the lab settings, then find the service entitled Clinical Chemistry.",
+    "Then within that service find the service fields stated by the lab that is in need of additional reference ranges.",
+    "You can then click the corresponding reference range items indicated by a '+' or a number to add this reference ranges."
+  ],
+  "solver": "Alain Marcus Levya",
+  "tags": [
+    "reference-range",
+    "service-field",
+    "services"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14231",
+  "lab": "One Medic",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The client requested to add a new account/member for the lab ",
+  "root_cause": "There is a new account from the client that they wish to add",
+  "actions": [
+    "Navigate to Settings, then go to Members and Member Groups, within their you can find an add button to add a new member given the credentials provided by the lab."
+      ],
+  "solver": "Clyde Calderon",
+  "tags": [
+    "accounts",
+    "member",
+    "member group"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14218",
+  "lab": "Cervo/1421",
+  "module": "patients",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The lab wants to merge duplicate patients",
+  "root_cause": "The lab has identified that the patient has duplicate records within the system as such they want to merge these into one patient",
+  "actions": [
+    "Navigate towards the Patients module, then find the patient that has duplicate records, as you click that patient there should be a button such as possible duplicate where you can then merge the patient"
+      ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "patient",
+    "merge"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14233",
+  "lab": "Smartlabs",
+  "module": "products",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The lab wants to add new products",
+  "root_cause": "The lab has new products which they want to add",
+  "actions": [
+    "Navigate to the Products module through settings, and there you should find an Add button to add a product based on the specifications provided by the lab"
+      ],
+  "solver": "Louise Tobias",
+  "tags": [
+    "add-product"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14234",
+  "lab": "Roque Diagnostics",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The client is reporting a missing document",
+  "root_cause": "The current document that the client is stating to be missing is currently set as inactive",
+  "actions": [
+    "Navigate to the Documents and document files module through the settings and find the specified missing document, then within the general settings of that document tick the Set document as active"
+      ],
+  "solver": "Trisha Harun",
+  "tags": [
+    "missing-document",
+    "document"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14239",
+  "lab": "Medprime",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The lab wants to adjust a document to fit into a single page",
+  "root_cause": "The 2D Echocardiogram report was creating a second page due to one row overflowing",
+  "actions": [
+    "Navigate to Documents through the settings and select the affected document, you may sync this document for context given the patient service affected, and adjust the spacing of the report so it fits into a singular page"
+      ],
+  "solver": "Daryle Milo",
+  "tags": [
+    "document-generation",
+    "document-format"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14248",
+  "lab": "Farcare Diagnostics",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The lab cannot download a document",
+  "root_cause": "The current document that the client is stating to be missing is currently set as inactive",
+  "actions": [
+    "Navigate to the Documents and document files module through the settings and find the specified missing document, then within the general settings of that document tick the Set document as active"
+      ],
+  "solver": "Hien Prieto",
+  "tags": [
+    "missing-document",
+    "document"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14236",
+  "lab": "PUDC Bacoor",
+  "module": "orders",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The client is requesting an order to be voided/cancelled",
+  "root_cause": "The client has created an incorrect transaction order",
+  "actions": [
+    "Navigate to the Orders module using the settings, and then find the specified order based on the information provided by the lab, once there you can set the status of the order to cancelled by pressing a button text in the upper right corner of the order container."  ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "orders",
+    "voiding",
+    "cancellation",
+    "void-order",
+    "cancel-order",
+    "cancelled"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14251",
+  "lab": "Palace",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-22",
+  "concern_summary": "The client requested to add a new cashier account/member for the lab ",
+  "root_cause": "There is a new account from the client that they wish to add as a cashier",
+  "actions": [
+    "Navigate to Settings, then go to Members and Member Groups, within their you can find an add button to add a new member given the credentials provided by the lab, particulary for this case you should add the member as a Cashier and into the appropriate cashier member group."
+      ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "accounts",
+    "member",
+    "member-group"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14268",
+  "lab": "Neolab",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-23",
+  "concern summary": "Fields are missing in the Fecalysis service",
+  "root_cause": "the service fields within the service asre not yet added/present",
+  "actions": [
+    "Navigate to the Services module through the settings, then find the Fecalysis service and open it",
+    "once within the service press the +ADD button on the upper right of portion of the module to add the necessary missing fields", 
+    "additionally you should also add the docsgen code for the resulting document since these are new fields." 
+  ],
+  "solver": "Johann De Guzman",
+  "tags": [
+    "service",
+    "patient-service",
+    "add-field"
+  ]
+},
+
+{
+  "ticket_id": "DASH-14287",
+  "lab": "Victory Medical Clinic",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-23",
+  "concern_summary": "The lab wants to add access for a new accocunt",
+  "root_cause": "The lab wants their new account to gain the necessary access to a specific module",
+  "actions": [
+    "Navigate to Settings, then go to Members and Member Groups", 
+    "within their you can find an add button to add a new member given the credentials provided by the lab", 
+    "particulary for this case you should add the member as a Cashier and into the appropriate cashier member group"
+  ],
+  "solver": "Clyde Calderon",
+  "tags": [
+    "accounts",
+    "member",
+    "member group"
+   
+  ]
+},
+
+{
+  "ticket_id": "DASH-14288",
+  "lab": "Victory Medical Clinic",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-23",
+  "concern_summary": "The lab has issues with a patient service field being automatically filled by default, and not being able to be deleted even when removed and saved from the document.",
+  "root_cause": "The service field affected had an option ticked for there to be a default value always in place",
+  "actions": [
+    "Navigate to the services module through the settings, then find the affected service", 
+    "now once you enter the service find the affected service field and click the item within the row of that service field under the data type column", 
+    "then navigate to the options and untick the default value as necessary."
+  ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "service",
+    "patient_service",
+    "service_field"
+   
+  ]
+},
+
+{
+  "ticket_id": "DASH-14280",
+  "lab": "One World Skin and Wellness",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-23",
+  "concern_summary": "The lab requests a doctor to be added access for face to face consultation",
+  "root_cause": "The current doctor has no access to a specific module/scope of the system",
+  "actions": [
+    "Navigate to the Members and Member groups module through the settings", 
+    "and find the specified account and click it to open setting for this account", 
+    "then navigate to the patient service management and add the neceessary service scope there."
+  ],
+  "solver": "Clyde Calderon",
+  "tags": [
+    "accounts",
+    "permissions",
+    "access",
+    "member"
+   
+  ]
+},
+
+{
+  "ticket_id": "DASH-14290",
+  "lab": "Lipa Health",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-23",
+  "concern_summary": "No patients are appearing in a certain queue for an account",
+  "root_cause": "The permissions allowed for a specific account are not enough to access the queue",
+  "actions": [
+    "Navigate to the Members and Member groups module through the settings", 
+    "and find the specified account and click it to open setting for this account", 
+    "then navigate to the scopes and add the tick the necessary permissions needed for that account."
+  ],
+  "solver": "Terenz Flores",
+  "tags": [
+    "members",
+    "scope",
+    "access"
+   
+  ]
 }
+
+
 
 
 ]
