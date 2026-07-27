@@ -1215,7 +1215,244 @@
     "access"
    
   ]
+},
+{
+  "ticket_id": "DASH-14297",
+  "lab": "BMCDC (Buhagin)",
+  "module": "orders",
+  "status": "resolved",
+  "date_reported": "2026-07-24",
+  "concern summary": "Cancellation of a order within the lab",
+  "root_cause": "Due to a mistake in transaction, the lab wants to cancel an order",
+  "actions": [
+    "Navigate to the Orders Module. Then find the specific order using info gathered from the laboratory and click it, Then you should be able to see the Main order module with the status Button on the upper right portion, wherein you may click that to then select the cancel option." 
+  ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "orders",
+    "cancellation",
+    "void"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14302",
+  "lab": "Medgo",
+  "module": "signatories",
+  "status": "resolved",
+  "date_reported": "2026-07-24",
+  "concern summary": "The laboratory wants to remove a specific signatory",
+  "root_cause": "The laboratory has a doctor that is no longer active",
+  "actions": [
+    "Go to Signatories",
+    "Under Services & Products, select the affected signatory",
+    "In that signatory’s settings, clear Set signatory as active to deactivate it." 
+  ],
+  "solver": "Alain Marcus Leyva",
+  "tags": [
+    "signatories",
+    "deletion",
+    "removal"
+      ]
+},
+
+
+{
+  "ticket_id": "DASH-14304",
+  "lab": "Addition of new signatory",
+  "module": "signatories",
+  "status": "resolved",
+  "date_reported": "2026-07-24",
+  "concern summary": "The lab has given details for the addition of a new signatory",
+  "root_cause": "The lab has a new person to be added as signatory",
+  "actions": [
+    "Go to Signatories module under the Services & Products section",
+    "Press the add button within the page and input the necessary details provided by the lab" 
+  ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "signatories",
+    "add-signatories"
+      ]
+},
+
+
+{
+  "ticket_id": "DASH-14308",
+  "lab": "Prime Health",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-24",
+  "concern summary": "Missing results in a document",
+  "root_cause": "The affected document is missing some code blocks to properly show some results",
+  "actions": [
+    "Navigate to the Documents and document files module under the service & products category through settings",
+    "Then find the affected document and open it to access the code for the said document",
+    "Then you should now check within the source code any missing variables that would need to properly display the results",
+    "Lastly, fix/add code as necessary"
+  ],
+  "solver": "Clyde Calderon",
+  "tags": [
+    "documents",
+    "missing-results"
+      ]
+},
+
+
+{
+  "ticket_id": "DASH-14331",
+  "lab": "Menara",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-24",
+  "concern summary": "The lab wants to add default templates for the results of a service field",
+  "root_cause": "The lab has new pre-made templates for the results of a service field under ECG",
+  "actions": [
+    "Navigate to the Services Module through the Settings",
+    "Find the affected Service",
+    "Find the particular service field targeted.",
+    "Add CLIA versions of the requested tests under the lab's Immuno/Sero services and update the related document templates."
+  ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "service",
+    "add_templates",
+    "results"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14363",
+  "lab": "HealthBit",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-27",
+  "concern summary": "The lab wants to make the results in a document red if it is a certain value",
+  "root_cause": "The laboratory wants the result for a test to be highlighted red when it is positive",
+  "actions": [
+    "Navigate to the Documents and document files module through the settings",
+    "Find the corresponding document that is affected. Then after opening",
+    "find the line of code indicating the results that you want to format", 
+    "then simply add a conditional statement checking the value of the result and giving a desired color when that condition is met." 
+  ],
+  "solver": "Alain Marcus Leyva",
+  "tags": [
+    "documents",
+    "results",
+    "highlight"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14371",
+  "lab": "DPI",
+  "module": "forms",
+  "status": "resolved",
+  "date_reported": "2026-07-27",
+  "concern summary": "The lab wants to add patient consent and privacy waiver in the registration form",
+  "root_cause": "The lab currently does not have a privacy and consent waiver in their registration form",
+  "actions": [
+    "Navigate to the Forms module through settings",
+    "Then Click the name of the specified form that you will edit/update",
+    "Then you should be able to view the form editor where you can manipulate the elements of the form based on the specifications given." 
+  ],
+  "solver": "Rafael Nathan Ang",
+  "tags": [
+    "forms"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14377",
+  "lab": "THCI",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-27",
+  "concern summary": "The address of the lab is missing in the document header",
+  "root_cause": "There is code missing within the document header to show the address of the laboratory that is affected.",
+  "actions": [
+    "Navigate to the Documents and document files module through the settings",
+    "Find the corresponding document that is affected. Then after opening",
+    "find the code for the document header which should be located on the topmost of the page",
+    "then add the necessary code block to display the needed information." 
+  ],
+  "solver": "Alain Marcus Leyva",
+  "tags": [
+    "documents",
+    "missing_information"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14383",
+  "lab": "Wellzone",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-27",
+  "concern summary": "Some documents within the lab are missing and cannot be donwloaded",
+  "root_cause": "The documents that are affected are currently inactive",
+  "actions": [
+    "Navigate to the Documents and document files module through the settings",
+    "Find the corresponding document that is affected. Open the affected document",
+    "and navigate to the general settings where you would find a slider button to set the document to active." 
+  ],
+  "solver": "Louise Tobias",
+  "tags": [
+    "documents",
+    "missing_documents",
+    "inactive"
+      ]
+},
+
+{
+  "ticket_id": "DASH-",
+  "lab": "Carewise",
+  "module": "signatories",
+  "status": "resolved",
+  "date_reported": "2026-07-27",
+  "concern summary": "Update the signature of a signatory",
+  "root_cause": "The current signature of a signatory is outdated and needs to updated.",
+  "actions": [
+    "Navigate to the Signatories module through the settings",
+    "Then find and click the signatory affected. After being redirected to the general settings", 
+    "delete the current outdated signature and upload the new siganture." 
+  ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "signatories",
+    "signature",
+    "remove-signature",
+    "remove-signatory",
+    "update-signatory",
+    "update-signatory"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14379",
+  "lab": "PUDC Salawag",
+  "module": "Patients",
+  "status": "resolved",
+  "date_reported": "2026-07-27",
+  "concern summary": "Merge Patients",
+  "root_cause": "There are duplicates of patients",
+  "actions": [
+    "Navigate Patients",
+    "Look for Patient name", 
+    "Click on an affected patient, and look for the has duplicate button on the upper right in red" 
+  ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "signatories",
+    "signature"
+      ]
 }
+
+
+
+
+
+
 
 
 
