@@ -5,13 +5,12 @@ import numpy as np
 from flask import Flask, request, render_template
 from sentence_transformers import SentenceTransformer
 import re
-#from sklearn.metrics.pairwise import cosine_similarity
 
 # --- Configuration ---
 MODEL_NAME = "all-MiniLM-L6-v2"
 JSON_PATH = "issue_cards.json"
-TOP_K = 3
-MIN_SCORE = 0.20
+TOP_K = 5
+MIN_SCORE = 0.35
 
 def cosine_similarity(vec1, vec2):
     """Calculates cosine similarity using pure Numpy (no sklearn needed)."""
@@ -53,6 +52,25 @@ def extract_concern(query_text: str) -> str:
     return query_text.strip()
 
 
+def extract_ticket_id(query_text: str) -> Optional[str]:
+    """Looks for a ticket ID pattern (e.g. DASH-14290, CS-105) anywhere in the query."""
+    match = re.search(r'\b([A-Z]{2,6}-\d{2,6})\b', query_text.upper())
+    return match.group(1) if match else None
+
+
+def has_keyword_match(query: str, card: Dict[str, Any]) -> bool:
+    """True if the card's exact module name or any of its tags appears
+    literally in the query text (case-insensitive)."""
+    q = query.lower()
+    module = card.get("module", "")
+    if isinstance(module, str) and module.lower() in q:
+        return True
+    for tag in card.get("tags", []):
+        if isinstance(tag, str) and tag.lower() in q:
+            return True
+    return False
+
+
 def load_cards(path: str) -> List[Dict[str, Any]]:
     """Safely loads and filters the JSON database."""
     if not os.path.exists(path):
@@ -76,6 +94,15 @@ def search_cards(query: str, cards: List[Dict], embeddings: np.ndarray) -> List[
 
     query_embedding = model.encode([query], convert_to_numpy=True)
     scores = cosine_similarity(query_embedding, embeddings)[0]
+
+    # A card whose exact module name or tag appears in the query text is
+    # guaranteed to clear MIN_SCORE, regardless of how weak its semantic
+    # score is on its own (a single unusual word against a long paragraph
+    # can score very low semantically even when it's a perfect literal match).
+    scores = np.array([
+        max(scores[i] + 0.3, MIN_SCORE + 0.05) if has_keyword_match(query, cards[i]) else scores[i]
+        for i in range(len(cards))
+    ])
 
     # 1. Find all indices that meet the minimum score threshold
     valid_indices = np.where(scores >= MIN_SCORE)[0]
@@ -115,25 +142,39 @@ def home():
     best_card = None
     best_score = None
     no_match_message = None
+    exact_match = False
 
     if request.method == 'POST':
         query = request.form.get('query', '').strip()
         if query:
-            clean_query = extract_concern(query)
+            ticket_id = extract_ticket_id(query)
+            matched_card = None
+            if ticket_id:
+                matched_card = next((c for c in cards if c.get('ticket_id', '').upper() == ticket_id), None)
 
-            if not clean_query:
-                no_match_message = "Could not extract a concern from the input."
+            if matched_card:
+                # Exact ticket ID found in the pasted text - show it directly,
+                # no need to fall back to "similar" tickets for something we already have on file.
+                best_card = matched_card
+                best_score = 1.0
+                exact_match = True
+                results = [{'card': matched_card, 'score': 1.0}]
             else:
-                results = search_cards(clean_query, cards, card_embeddings)
+                clean_query = extract_concern(query)
 
-                if results:
-                    best_card = results[0]['card']
-                    best_score = results[0]['score']
+                if not clean_query:
+                    no_match_message = "Could not extract a concern from the input."
                 else:
-                    no_match_message = (
-                        "No sufficient match was found. "
-                        "Please add more system-related tickets to the database to improve search results."
-                    )
+                    results = search_cards(clean_query, cards, card_embeddings)
+
+                    if results:
+                        best_card = results[0]['card']
+                        best_score = results[0]['score']
+                    else:
+                        no_match_message = (
+                            "No sufficient match was found. "
+                            "Please add more system-related tickets to the database to improve search results."
+                        )
 
     return render_template(
         'index.html',
@@ -141,7 +182,8 @@ def home():
         results=results,
         best_card=best_card,
         best_score=best_score,
-        no_match_message=no_match_message
+        no_match_message=no_match_message,
+        exact_match=exact_match
     )
 
 

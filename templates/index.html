@@ -9,6 +9,20 @@
 <body>
   <div class="page">
 
+    <header class="masthead">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3C8 3 5 5.5 5 9c0 2 1 3.2 1 4.5C6 15.5 5 16 5 17.5 5 19.4 6.8 21 9 21h6c2.2 0 4-1.6 4-3.5 0-1.5-1-2-1-3.5C18 12.2 19 11 19 9c0-3.5-3-6-7-6z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M9.5 9.5c0-1.2 1-2 2.5-2s2.5.8 2.5 2-1 1.6-1 2.8v1.2" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="11" cy="16.3" r="0.9" fill="white"/>
+        </svg>
+      </div>
+      <div class="masthead-text">
+        <h1 class="brand-word">Dashbrain</h1>
+        <p>Ticket matcher for Dashlabs support intakers</p>
+      </div>
+    </header>
+
     <!-- 1. Paste concern -->
     <form method="POST" class="card card-input">
       <label for="query" class="label">Paste concern here</label>
@@ -19,6 +33,7 @@
     <!-- 2. Recommended actions -->
     <section class="card card-actions">
       <h2>Recommended actions</h2>
+      <p class="disclaimer">Always confirm these steps still match this ticket's actual context before applying them — matches are based on similarity, not a guarantee.</p>
 
       {% if no_match_message %}
         <p>{{ no_match_message }}</p>
@@ -48,7 +63,9 @@
     <p>{{ no_match_message }}</p>
 
   {% elif best_card %}
-    <p><strong>Matched ticket:</strong> {{ best_card.ticket_id }} · {{ best_card.lab }} · {{ best_card.module }}</p>
+    <p><strong>Matched ticket:</strong> {{ best_card.ticket_id }} · {{ best_card.lab }} · {{ best_card.module }}
+      {% if exact_match %}<span class="badge">Exact ID match</span>{% endif %}
+    </p>
     <p><strong>Similarity score:</strong> {{ '%.4f'|format(best_score or 0) }}</p>
     <p><strong>Concern:</strong> {{ best_card.concern_summary }}</p>
     <p><strong>Root cause:</strong> {{ best_card.root_cause }}</p>
@@ -56,17 +73,22 @@
     <p><strong>Solver:</strong> {{ best_card.solver }}</p>
     <p class="hint">
       This suggestion is based on how {{ best_card.solver }} previously resolved a similar case.
-      Always verify if the context still matches.
+      Always verify if the context still matches or is applicable.
     </p>
 
     {% if results and results|length > 1 %}
       <hr class="divider" />
       <p><strong>Other close matches:</strong></p>
       <ul class="small-list">
-        {% for item in results[1:3] %}
+        {% for item in results[1:] %}
           <li>
-            {{ item.card.ticket_id }} · {{ item.card.lab }} · {{ item.card.module }}
-            (score {{ '%.4f'|format(item.score) }})
+            <form method="POST" class="ticket-link-form">
+              <input type="hidden" name="query" value="{{ item.card.ticket_id }}">
+              <button type="submit" class="ticket-link">
+                {{ item.card.ticket_id }} · {{ item.card.lab }} · {{ item.card.module }}
+                (score {{ '%.4f'|format(item.score) }})
+              </button>
+            </form>
           </li>
         {% endfor %}
       </ul>
@@ -78,5 +100,15 @@
 </section>
 
   </div>
+
+  <script>
+    document.getElementById('query').addEventListener('keydown', function (e) {
+      // Ctrl+Enter (Windows/Linux) or Cmd+Enter (Mac) submits the form
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        this.closest('form').submit();
+      }
+    });
+  </script>
 </body>
 </html>
