@@ -1939,6 +1939,99 @@
     "template",
     "options"
       ]
+},
+
+{
+  "ticket_id": "DASH-",
+  "lab": "HealthBridge",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "ECG Chart image not showing in the resulting document.",
+  "root_cause": "The code currently does not account for large image sizes.",
+  "actions": [
+    "Navigate to the Documents and document files module through the Settings. Then find and click the affected document to enter the code editing mode. Then adjust things such as the max-heigt property of the document to allow the images to appear properly." 
+  ],
+  "solver": "Johann De Guzman",
+  "tags": [
+    "document",
+    "image"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14450",
+  "lab": "Mendoza MCDC",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "The lab wants to update the service field name and for it to also reflect in the corresponding document.",
+  "root_cause": "The document test name and service field name is outdated and needs to be changed.",
+  "actions": [
+    "Navigate to the Service module through Settings. Then find the affected service and click on the name, you should then find the specific service field to be updated and simply click on it to edit as needed, additionally check the corresponding document and adjust the code to display the name of the service field as well. " 
+  ],
+  "solver": "Alain Marcus Leyva",
+  "tags": [
+    "document",
+    "services",
+    "update"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14455",
+  "lab": "BMCDC Mobile",
+  "module": "products",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "No products showing when transacting an order",
+  "root_cause": "The product had no price set",
+  "actions": [
+    "Navigate to the Products module through Settings. Then find and click the name of the affected product. You should now see a + ADD PRICE after being redirected, and you shoul now be able to add the necessary price of the said product." 
+  ],
+  "solver": "Rafael Nathan Ang",
+  "tags": [
+    "product",
+    "price"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14461",
+  "lab": "BMCDC Lanang",
+  "module": "orders",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "The lab wants to adjust the home service fee percentage",
+  "root_cause": "The current percentage rate for the home service fee is outdated",
+  "actions": [
+    "Navigate to the Stores module through the settings. Then find the store that is affected by this fee and click it. After being redirected to the store settings go to the Cashier Module Settings tab where you will find the Order Item Templates and you can then edit the necessary percentages and caluclations there."
+  ],
+  "solver": "Jean Paul Espino",
+  "tags": [
+    "orders",
+    "fees"
+      ]
+},
+
+{
+  "ticket_id": "DASH-",
+  "lab": "Shalom Batangas",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "An account within the lab cannot change the priority status in orders",
+  "root_cause": "The account does not have the necessary access to update this status",
+  "actions": [
+    "Navigate to the Members and member groups module through Settings. Then click the name of the affected account. Then go to the scopes tab and give the necessary read, write, and delete access to queues, queue servers, and queue tasks." 
+  ],
+  "solver": "Terenz Flores",
+  "tags": [
+    "scope",
+    "access",
+    "account",
+    "orders"
+      ]
 }
 
 ]
