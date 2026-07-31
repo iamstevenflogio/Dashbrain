@@ -46,26 +46,27 @@
   {
     "ticket_id": "DASH-12196",
     "lab": "Sierra Makiling",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-05-30",
     "concern_summary": "Receipt are being printed on whole bond paper",
     "root_cause": "The receipts document did not have the correct page setup for receipt printing.",
     "actions": [
-      "In the affected Document, navigate to Page Setup, set Height and Width to the appropriate size. Ask around for the specific dimensions.",
+      "In the affected Document, navigate to Page Setup, set Height and Width to the appropriate size.",
+      "Ask the lab for the specific dimensions.",
       "For receipt printing, set the Height to 279.4 mm and width to 80 mm"
     ],
     "solver": "Adrian Adajar",
     "tags": [
       "page-setup",
       "receipt-printing",
-      "document-generation"
+      "document"
     ]
   },
   {
     "ticket_id": "DASH-12213",
     "lab": "OMNIA",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-05-30",
     "concern_summary": "Add a Standard X-Ray Format Result [Can Copy in OG Test-Lab]",
@@ -77,26 +78,7 @@
     "tags": [
       "add_template",
       "x-ray",
-      "document-generation"
-    ]
-  },
-  {
-    "ticket_id": "DASH-12214",
-    "lab": "ValleyMed",
-    "module": "Documents and document files",
-    "status": "resolved",
-    "date_reported": "2026-05-30",
-    "concern_summary": "In result form Hematology, would it be possible that results and references be standardized to two decimal places with trailing zeros retained. For example 0.60 instaed of 0.6",
-    "root_cause": "null",
-    "actions": [
-      "In the affected Document, simply edit the results and edit the code to have desired decimal places."
-    ],
-    "solver": "Martin Aniceto",
-    "tags": [
-      "document-generation",
-      "decimal-places",
-      "hematology",
-      "result-formatting"
+      "document"
     ]
   },
   {
@@ -144,7 +126,7 @@
   {
     "ticket_id": "DASH-12346",
     "lab": "St. Vincent",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "X-ray image not showing in generated document despite using the FILE UPLOAD template placeholder.",
@@ -189,7 +171,7 @@
   {
     "ticket_id": "DASH-12301",
     "lab": "Upcare Davao",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Signature is overlapping and blocking the text on the document.",
@@ -200,7 +182,7 @@
     ],
     "solver": "Hien Prieto",
     "tags": [
-      "document-generation",
+      "document",
       "signatories",
       "edit-signatory",
       "edit-signatories",
@@ -210,7 +192,7 @@
   {
     "ticket_id": "DASH-12302",
     "lab": "Medgo",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Result prompt alignment on the document is incorrect.",
@@ -221,7 +203,7 @@
     ],
     "solver": "Terenz Flores",
     "tags": [
-      "document-generation",
+      "document",
       "alignment"
     ]
   },
@@ -246,7 +228,7 @@
   {
     "ticket_id": "DASH-12304",
     "lab": "Ashrey",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Ultrasound document is generating too many extra blank/white pages.",
@@ -258,7 +240,10 @@
     "solver": "Hien Prieto",
     "tags": [
       "document",
-      "white-page"
+      "white-page",
+      "blank-page",
+      "extra page",
+      "extends"
     ]
   },
   {
@@ -270,7 +255,8 @@
     "concern_summary": "Some patient services statuses sometimes do not update as expected.",
     "root_cause": "Handled and fixed by the development team; specific root cause not documented in this ticket.",
     "actions": [
-      "Escalate similar intermittent status issues on patient services to the development team with affected examples."
+      "Escalate similar intermittent status issues on patient services to the CS team (mga boss hehe) and see if they can help.",
+      "Wait for their go signal before raising anything to the dev team for further investigation."
     ],
     "solver": "Philly Tan",
     "tags": [
@@ -281,7 +267,7 @@
   {
     "ticket_id": "DASH-12307",
     "lab": "Rosario Medical Center",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Release date field in the document is missing.",
@@ -292,7 +278,10 @@
     ],
     "solver": "Johann De Guzman",
     "tags": [
-      "document-generation"
+      "document",
+      "release-date",
+      "patient-service",
+      "docsgen"
     ]
   },
   {
@@ -317,7 +306,7 @@
   {
     "ticket_id": "DASH-12309",
     "lab": "Mediko Kapitolyo",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Release date field in the document is missing.",
@@ -327,7 +316,10 @@
     ],
     "solver": "Johann De Guzman",
     "tags": [
-      "document-generation"
+      "document",
+      "release-date",
+      "patient-service",
+      "docsgen"
     ]
   },
   {
@@ -343,13 +335,16 @@
     ],
     "solver": "Alain Marcus Leyva",
     "tags": [
-      "queue-tasks"
+      "queue-tasks",
+      "Worklist",
+      "results-not-appearing",
+      "queue"
     ]
   },
   {
     "ticket_id": "DASH-12311",
     "lab": "HealthBit",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "No tests are listed under the patient service package in the document; client does not see the package tests.",
@@ -360,8 +355,8 @@
     ],
     "solver": "Alain Marcus Leyva",
     "tags": [
-      "document-generation",
-      "logic",
+      "document",
+      "docsgen",
       "duplicate-results"
     ]
   },
@@ -380,6 +375,10 @@
     "solver": "Alain Marcus Leyva",
     "tags": [
       "cashier",
+      "partners",
+      "add-cashier",
+      "add-partner",
+      "cashiers",
       "partners"
     ]
   },
@@ -401,6 +400,7 @@
       "package-creation",
       "products",
       "add-product",
+      "add-products",
       "new-package",
       "new-packages"
     ]
@@ -430,7 +430,7 @@
   {
     "ticket_id": "DASH-12214",
     "lab": "ValleyMed",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-05-30",
     "concern_summary": "Standardize how results and reference values are displayed to a specific number of decimal places with trailing zeros (for example, 0.60 instead of 0.6).",
@@ -441,7 +441,7 @@
     ],
     "solver": "Martin Aniceto",
     "tags": [
-      "document-generation",
+      "document",
       "decimal-places",
       "result-formatting",
       "add-zeroes"
@@ -464,13 +464,15 @@
       "ledger-groups",
       "ledger-group",
       "ledger",
-      "add-ledger"
+      "ledgers",
+      "add-ledger",
+      "add-ledgers"
     ]
   },
   {
     "ticket_id": "DASH-12729",
     "lab": "AIC Health Hub",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-11",
     "concern_summary": "Add watermark\nDOH watermark not appearing",
@@ -482,7 +484,7 @@
     ],
     "solver": "Steven Flogio",
     "tags": [
-      "document-generation",
+      "document",
       "document-files",
       "watermark",
       "watermark-not-appearing",
@@ -533,7 +535,7 @@
   {
     "ticket_id": "DASH-12300",
     "lab": "ValleyMed",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-01",
     "concern_summary": "Very specific request, they wanted the signatory for Aldrin Mayon to be on the left side specifically and the others on the right side\nSignatory not aligned",
@@ -544,7 +546,7 @@
     ],
     "solver": "Hien Prieto",
     "tags": [
-      "document-generation",
+      "document",
       "signatories",
       "edit-signatory",
       "edit-signatories",
@@ -554,7 +556,7 @@
   {
     "ticket_id": "DASH-12313",
     "lab": "1421 Medical Services - Taguig",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Fix formatting of Radiographic Report",
@@ -565,7 +567,7 @@
     ],
     "solver": "Jero Hilario",
     "tags": [
-      "document-generation",
+      "document",
       "radiographic-report",
       "documents"
     ]
@@ -573,7 +575,7 @@
   {
     "ticket_id": "DASH-12314",
     "lab": "ValleyMed",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Radiologists Name is not visible on document",
@@ -584,7 +586,7 @@
     ],
     "solver": "Gelie Emmanuel",
     "tags": [
-      "document-generation",
+      "document",
       "signatories",
       "radiologist"
     ]
@@ -625,7 +627,7 @@
   {
     "ticket_id": "DASH-12317",
     "lab": "Upcare Caloocan",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Fix the Signature for Urinalysis and Fecalysis",
@@ -644,7 +646,7 @@
   {
     "ticket_id": "DASH-12318",
     "lab": "Abundant Grace of God Maternity Center (AGGMC)",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-02",
     "concern_summary": "Previous prenatal records contain comments, but these comments are not appearing in the Summary Report.",
@@ -655,7 +657,7 @@
     ],
     "solver": "Jero Hilario",
     "tags": [
-      "document-generation"
+      "document"
     ]
   },
   {
@@ -758,7 +760,7 @@
   {
     "ticket_id": "DASH-14194",
     "lab": "RGO Parañaque",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-21",
     "concern_summary": "Hematocrit value in decimal form",
@@ -768,7 +770,7 @@
     ],
     "solver": "Clyde Calderon",
     "tags": [
-      "document-generation",
+      "document",
       "radiology-report",
       "decimal-formatting"
     ]
@@ -794,26 +796,7 @@
   {
     "ticket_id": "DASH-14192",
     "lab": "Sky Diagnostic",
-    "module": "Documents and document files",
-    "status": "resolved",
-    "date_reported": "2026-07-21",
-    "concern_summary": "add eGFR test on docs",
-    "root_cause": "The requested eGFR test and reference range were not yet configured as a Service Field and were not present on the Clinical Chemistry result document.",
-    "actions": [
-      "Navigate to Document and add requested inputs. Also, add the requested item as a Service Field under Services first if you haven't."
-    ],
-    "solver": "Johann De Guzman",
-    "tags": [
-      "documents",
-      "services",
-      "service-field",
-      "egfr"
-    ]
-  },
-  {
-    "ticket_id": "DASH-14192",
-    "lab": "Sky Diagnostic",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-21",
     "concern_summary": "add eGFR test on docs",
@@ -832,7 +815,7 @@
   {
     "ticket_id": "DASH-14197",
     "lab": "Valulife",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-21",
     "concern_summary": "Edit normal val of PSA on docs",
@@ -887,7 +870,7 @@
   {
     "ticket_id": "DASH-12955",
     "lab": "E. Asuncion",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-18",
     "concern_summary": "Remarks not appearing on documents",
@@ -899,7 +882,8 @@
     "tags": [
       "documents",
       "remarks",
-      "document-generation"
+      "document",
+      "document-not-showing-remarks"
     ]
   },
   {
@@ -1023,7 +1007,7 @@
   {
     "ticket_id": "DASH-14234",
     "lab": "Roque Diagnostics",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-22",
     "concern_summary": "The client is reporting a missing document",
@@ -1040,7 +1024,7 @@
   {
     "ticket_id": "DASH-14239",
     "lab": "Medprime",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-22",
     "concern_summary": "The lab wants to adjust a document to fit into a single page",
@@ -1050,14 +1034,16 @@
     ],
     "solver": "Daryle Milo",
     "tags": [
-      "document-generation",
-      "document-format"
+      "document",
+      "release-date",
+      "patient-service",
+      "docsgen"
     ]
   },
   {
     "ticket_id": "DASH-14248",
     "lab": "Farcare Diagnostics",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-22",
     "concern_summary": "The lab cannot download a document",
@@ -1117,7 +1103,6 @@
     "module": "Services",
     "status": "resolved",
     "date_reported": "2026-07-23",
-    "concern summary": "Fields are missing in the Fecalysis service",
     "root_cause": "the service fields within the service asre not yet added/present",
     "actions": [
       "Navigate to the Services module through the settings, then find the Fecalysis service and open it",
@@ -1129,7 +1114,8 @@
       "service",
       "patient-service",
       "add-field"
-    ]
+    ],
+    "concern_summary": "Fields are missing in the Fecalysis service"
   },
   {
     "ticket_id": "DASH-14287",
@@ -1219,7 +1205,6 @@
     "module": "Orders",
     "status": "resolved",
     "date_reported": "2026-07-24",
-    "concern summary": "Cancellation of a order within the lab",
     "root_cause": "Due to a mistake in transaction, the lab wants to cancel an order",
     "actions": [
       "Navigate to the Orders Module. Then find the specific order using info gathered from the laboratory and click it, Then you should be able to see the Main order module with the status Button on the upper right portion, wherein you may click that to then select the cancel option."
@@ -1229,7 +1214,8 @@
       "orders",
       "cancellation",
       "void"
-    ]
+    ],
+    "concern_summary": "Cancellation of a order within the lab"
   },
   {
     "ticket_id": "DASH-14302",
@@ -1237,7 +1223,6 @@
     "module": "Signatories",
     "status": "resolved",
     "date_reported": "2026-07-24",
-    "concern summary": "The laboratory wants to remove a specific signatory",
     "root_cause": "The laboratory has a doctor that is no longer active",
     "actions": [
       "Go to Signatories",
@@ -1248,8 +1233,11 @@
     "tags": [
       "signatories",
       "deletion",
-      "removal"
-    ]
+      "removal",
+      "remove",
+      "delete"
+    ],
+    "concern_summary": "The laboratory wants to remove a specific signatory"
   },
   {
     "ticket_id": "DASH-14304",
@@ -1257,7 +1245,6 @@
     "module": "Signatories",
     "status": "resolved",
     "date_reported": "2026-07-24",
-    "concern summary": "The lab has given details for the addition of a new signatory",
     "root_cause": "The lab has a new person to be added as signatory",
     "actions": [
       "Go to Signatories module under the Services & Products section",
@@ -1267,15 +1254,15 @@
     "tags": [
       "signatories",
       "add-signatories"
-    ]
+    ],
+    "concern_summary": "The lab has given details for the addition of a new signatory"
   },
   {
     "ticket_id": "DASH-14308",
     "lab": "Prime Health",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-24",
-    "concern summary": "Missing results in a document",
     "root_cause": "The affected document is missing some code blocks to properly show some results",
     "actions": [
       "Navigate to the Documents and document files module under the service & products category through settings",
@@ -1287,7 +1274,8 @@
     "tags": [
       "documents",
       "missing-results"
-    ]
+    ],
+    "concern_summary": "Missing results in a document"
   },
   {
     "ticket_id": "DASH-14331",
@@ -1295,7 +1283,6 @@
     "module": "Services",
     "status": "resolved",
     "date_reported": "2026-07-24",
-    "concern summary": "The lab wants to add default templates for the results of a service field",
     "root_cause": "The lab has new pre-made templates for the results of a service field under ECG",
     "actions": [
       "Navigate to the Services Module through the Settings",
@@ -1308,15 +1295,15 @@
       "service",
       "add_templates",
       "results"
-    ]
+    ],
+    "concern_summary": "The lab wants to add default templates for the results of a service field"
   },
   {
     "ticket_id": "DASH-14363",
     "lab": "HealthBit",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-27",
-    "concern summary": "The lab wants to make the results in a document red if it is a certain value",
     "root_cause": "The laboratory wants the result for a test to be highlighted red when it is positive",
     "actions": [
       "Navigate to the Documents and document files module through the settings",
@@ -1329,7 +1316,8 @@
       "documents",
       "results",
       "highlight"
-    ]
+    ],
+    "concern_summary": "The lab wants to make the results in a document red if it is a certain value"
   },
   {
     "ticket_id": "DASH-14371",
@@ -1337,7 +1325,6 @@
     "module": "Forms",
     "status": "resolved",
     "date_reported": "2026-07-27",
-    "concern summary": "The lab wants to add patient consent and privacy waiver in the registration form",
     "root_cause": "The lab currently does not have a privacy and consent waiver in their registration form",
     "actions": [
       "Navigate to the Forms module through settings",
@@ -1347,15 +1334,15 @@
     "solver": "Rafael Nathan Ang",
     "tags": [
       "forms"
-    ]
+    ],
+    "concern_summary": "The lab wants to add patient consent and privacy waiver in the registration form"
   },
   {
     "ticket_id": "DASH-14377",
     "lab": "THCI",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-27",
-    "concern summary": "The address of the lab is missing in the document header",
     "root_cause": "There is code missing within the document header to show the address of the laboratory that is affected.",
     "actions": [
       "Navigate to the Documents and document files module through the settings",
@@ -1367,15 +1354,15 @@
     "tags": [
       "documents",
       "missing_information"
-    ]
+    ],
+    "concern_summary": "The address of the lab is missing in the document header"
   },
   {
     "ticket_id": "DASH-14383",
     "lab": "Wellzone",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-27",
-    "concern summary": "Some documents within the lab are missing and cannot be donwloaded",
     "root_cause": "The documents that are affected are currently inactive",
     "actions": [
       "Navigate to the Documents and document files module through the settings",
@@ -1387,15 +1374,15 @@
       "documents",
       "missing_documents",
       "inactive"
-    ]
+    ],
+    "concern_summary": "Some documents within the lab are missing and cannot be donwloaded"
   },
   {
-    "ticket_id": "DASH-",
+    "ticket_id": "DASH-14388",
     "lab": "Carewise",
     "module": "Signatories",
     "status": "resolved",
     "date_reported": "2026-07-27",
-    "concern summary": "Update the signature of a signatory",
     "root_cause": "The current signature of a signatory is outdated and needs to updated.",
     "actions": [
       "Navigate to the Signatories module through the settings",
@@ -1408,9 +1395,9 @@
       "signature",
       "remove-signature",
       "remove-signatory",
-      "update-signatory",
       "update-signatory"
-    ]
+    ],
+    "concern_summary": "Update the signature of a signatory"
   },
   {
     "ticket_id": "DASH-14379",
@@ -1418,7 +1405,6 @@
     "module": "Patients",
     "status": "resolved",
     "date_reported": "2026-07-27",
-    "concern summary": "Merge Patients",
     "root_cause": "There are duplicates of patients",
     "actions": [
       "Navigate Patients",
@@ -1427,9 +1413,11 @@
     ],
     "solver": "Steven Flogio",
     "tags": [
-      "signatories",
-      "signature"
-    ]
+      "patients",
+      "merge",
+      "duplicate-patients"
+    ],
+    "concern_summary": "Merge Patients"
   },
   {
     "ticket_id": "DASH-14124",
@@ -1549,7 +1537,7 @@
     "tags": [
       "Services",
       "Service Field",
-      "Documents and document files",
+      "Documents",
       "Field",
       "Patient Service"
     ]
@@ -1577,7 +1565,7 @@
   {
     "ticket_id": "DASH-12743",
     "lab": "E. Asuncion",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-06-11",
     "concern_summary": "Signatories/Footer is not anchored to the bottom of the page",
@@ -1745,7 +1733,11 @@
     ],
     "solver": "Clyde Calderon",
     "tags": [
-      "Signatories"
+      "Signatories",
+      "remove",
+      "delete",
+      "remove-signatory",
+      "delete-signatory"
     ]
   },
   {
@@ -1763,7 +1755,11 @@
     ],
     "solver": "Herod Velasco",
     "tags": [
-      "Members"
+      "Members",
+      "remove",
+      "delete",
+      "remove-member",
+      "delete-member"
     ]
   },
   {
@@ -1790,7 +1786,7 @@
   {
     "ticket_id": "DASH-14409",
     "lab": "Eluvo",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-28",
     "concern_summary": "No document attached when sending result via email",
@@ -1814,7 +1810,7 @@
   {
     "ticket_id": "DASH-13983",
     "lab": "SWIFT",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-15",
     "concern_summary": "The high and low flags/indicators are not showing",
@@ -1831,9 +1827,107 @@
     ]
   },
   {
+    "ticket_id": "DASH-14407",
+    "lab": "Accutrust",
+    "module": "Documents",
+    "status": "resolved",
+    "date_reported": "2026-07-28",
+    "concern_summary": "The lab wants to update the content for their document.",
+    "root_cause": "A document in the lab is currently outdated in content.",
+    "actions": [
+      "Navigate to Documents and document files through the Settings.",
+      "Then find the document of concern based on the lab.",
+      "After clicking it's name you should be redirected to the editor where you can then update the contents of the file.",
+      "After updating save the file accordingly based on your changes."
+    ],
+    "solver": "Johann De Guzman",
+    "tags": [
+      "documents",
+      "update"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14408",
+    "lab": "Shalom (Padre Garcia)",
+    "module": "Signatories",
+    "status": "resolved",
+    "date_reported": "2026-07-28",
+    "concern_summary": "The lab wants to add new multiple signatories",
+    "root_cause": "The lab has new staff which they want to add signatories for.",
+    "actions": [
+      "Navigate to the Signatories module through the Settings.",
+      "Then press the + ADD button to add the necessary signatories one by one based on the information prescribed by the lab."
+    ],
+    "solver": "Lloyd Juan",
+    "tags": [
+      "signatories"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14410",
+    "lab": "Valulife",
+    "module": "Documents",
+    "status": "resolved",
+    "date_reported": "2026-07-28",
+    "concern_summary": "Addition of default remarks to a document",
+    "root_cause": "There is currently no default remarks for a document where there is no manually inputted remarks.",
+    "actions": [
+      "Navigate to Documents and document files through the Settings.",
+      "Then find the document of concern based on the lab.",
+      "After clicking it's name you should be redirected to the editor where you can then update the contents of the file, for this case you can add a conditional statement that would display a default text if the remarks is not present in the patient service."
+    ],
+    "solver": "Lloyd Juan",
+    "tags": [
+      "documents",
+      "remarks"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14415",
+    "lab": "Sandbox (Clark)",
+    "module": "Accounts",
+    "status": "resolved",
+    "date_reported": "2026-07-28",
+    "concern_summary": "The lab reported that an account cannot access patient services despite having the ticked all the scopes for this module",
+    "root_cause": "The account does not have proper permissions to access this module.",
+    "actions": [
+      "Navigate to the Members and member group module through the Settings.",
+      "Find the specified account based on the provided information.",
+      "Once you click the name it should redirect to the settings of the signatory, where you should now check if the scopes are properly ticked",
+      "Continue to the Patient Service Management tab and tick the General Rule to apply an override access for a specific account based on the client's needs"
+    ],
+    "solver": "Johann De Guzman",
+    "tags": [
+      "accounts",
+      "access",
+      "scope"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14417",
+    "lab": "Sto. Nino",
+    "module": "Services",
+    "status": "resolved",
+    "date_reported": "2026-07-28",
+    "concern_summary": "The lab wants to adjust the content of the template options of a service field.",
+    "root_cause": "The current template options has an incorrect spelling of a term.",
+    "actions": [
+      "Navigate to Services through the settings.",
+      "Find the affected service and click it.",
+      "Find the affected service type and click the value in the column of data type to then find the options tab.",
+      "Within the options tab you should be able to edit the necessary template options."
+    ],
+    "solver": "Steven Flogio",
+    "tags": [
+      "services",
+      "template",
+      "options"
+    ]
+  },
+  {
     "ticket_id": "DASH-14242",
     "lab": "OHM",
-    "module": "Documents and document files",
+    "module": "Documents",
     "status": "resolved",
     "date_reported": "2026-07-22",
     "concern_summary": "The combined document is not showing the correct signatories",
@@ -1849,96 +1943,104 @@
       "Signatories"
     ]
   },
-
   {
-  "ticket_id": "DASH-14407",
-  "lab": "Accutrust",
-  "module": "documents",
-  "status": "resolved",
-  "date_reported": "2026-07-28",
-  "concern summary": "The lab wants to update the content for their document.",
-  "root_cause": "A document in the lab is currently outdated in content.",
-  "actions": [
-    "Navigate to Documents and document files through the Settings. Then find the document of concern based on the lab. After clicking it's name you should be redirected to the editor where you can then update the contents of the file. After updating save the file accordingly based on your changes." 
-  ],
-  "solver": "Johann De Guzman",
-  "tags": [
-    "documents",
-    "update"
-      ]
-},
-
-{
-  "ticket_id": "DASH-14408",
-  "lab": "Shalom (Padre Garcia)",
-  "module": "signatories",
-  "status": "resolved",
-  "date_reported": "2026-07-28",
-  "concern summary": "The lab wants to add new multiple signatories",
-  "root_cause": "The lab has new staff which they want to add signatories for.",
-  "actions": [
-    "Navigate to the Signatories module through the Settings. Then press the +ADD button to add the necessary signatories one by one based on the information prescribed by the lab." 
-  ],
-  "solver": "Lloyd Juan",
-  "tags": [
-    "signatories"
-      ]
-},
-
-{
-  "ticket_id": "DASH-14410",
-  "lab": "Valulife",
-  "module": "documents",
-  "status": "resolved",
-  "date_reported": "2026-07-28",
-  "concern summary": "Addition of default remarks to a document",
-  "root_cause": "There is currently no default remarks for a document where there is no manually inputted remarks.",
-  "actions": [
-    "Navigate to Documents and document files through the Settings. Then find the document of concern based on the lab. After clicking it's name you should be redirected to the editor where you can then update the contents of the file, for this case you can add a conditional statement that would display a default text if the remarks is not present in the patient service." 
-  ],
-  "solver": "Lloyd Juan",
-  "tags": [
-    "documents",
-    "remarks"
-      ]
-},
-
-{
-  "ticket_id": "DASH-14415",
-  "lab": "Sandbox (Clark)",
-  "module": "accounts",
-  "status": "resolved",
-  "date_reported": "2026-07-28",
-  "concern summary": "The lab reported that an account cannot access patient services despite having the ticked all the scopes for this module",
-  "root_cause": "The account does not have proper permissions to access this module.",
-  "actions": [
-    "Navigate to the Members and member group module through the Settings. Then find the specified account based on the provided information. Then once you click the name it should redirect to the settings of the signatory, where you should now check if the scopes are properly ticked and if so continue to the Patient Service Management tab and tick the General Rule to apply an override access for a specific account based on your needs" 
-  ],
-  "solver": "Johann De Guzman",
-  "tags": [
-    "accounts",
-    "access",
-    "scope"
-      ]
-},
-
-{
-  "ticket_id": "DASH-14417",
-  "lab": "Sto. Nino",
-  "module": "services",
-  "status": "resolved",
-  "date_reported": "2026-07-28",
-  "concern summary": "The lab wants to adjust the content of the template options of a service field.",
-  "root_cause": "The current template options has an incorrect spelling of a term.",
-  "actions": [
-    "Navigate to Services through the settings. Then find the affected service and click it. Now find the affected service type and click the value in the column of data type to then find the options tab. Within the options tab you should be able to edit the necessary template options." 
-  ],
-  "solver": "Steven Flogio",
-  "tags": [
-    "services",
-    "template",
-    "options"
-      ]
-}
-
+    "ticket_id": "DASH-14450",
+    "lab": "Mendoza MCDC",
+    "module": "Services",
+    "status": "resolved",
+    "date_reported": "2026-07-29",
+    "concern_summary": "The lab wants to update the service field name and for it to also reflect in the corresponding document.",
+    "root_cause": "The document test name and service field name is outdated and needs to be changed.",
+    "actions": [
+      "Navigate to the Service module through Settings.",
+      "Then find the affected service and click on the name, you should then find the specific service field to be updated.",
+      "Simply click on it to edit as needed.",
+      "Additionally, check the corresponding document and adjust the code to display the name of the service field as well. "
+    ],
+    "solver": "Alain Marcus Leyva",
+    "tags": [
+      "document",
+      "services",
+      "update"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14455",
+    "lab": "BMCDC Mobile",
+    "module": "Products",
+    "status": "resolved",
+    "date_reported": "2026-07-29",
+    "concern_summary": "No products showing when transacting an order",
+    "root_cause": "The product had no price set",
+    "actions": [
+      "Navigate to the Products module through Settings.",
+      "Then find and click the name of the affected product.",
+      "You should now see a + ADD PRICE after being redirected, and you should now be able to add the necessary price of the said product."
+    ],
+    "solver": "Rafael Nathan Ang",
+    "tags": [
+      "product",
+      "price"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14461",
+    "lab": "BMCDC Lanang",
+    "module": "Orders",
+    "status": "resolved",
+    "date_reported": "2026-07-29",
+    "concern_summary": "The lab wants to adjust the home service fee percentage",
+    "root_cause": "The current percentage rate for the home service fee is outdated",
+    "actions": [
+      "Navigate to the Stores module through the settings.",
+      "Then find the store that is affected by this fee and click it.",
+      "After being redirected to the store settings go to the Cashier Module Settings tab where you will find the Order Item Templates.",
+      "You can then edit the necessary percentages and calculations there."
+    ],
+    "solver": "Jean Paul Espino",
+    "tags": [
+      "orders",
+      "fees"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14445",
+    "lab": "HealthBridge",
+    "module": "Documents",
+    "status": "resolved",
+    "date_reported": "2026-07-29",
+    "concern_summary": "ECG Chart image not showing in the resulting document.",
+    "root_cause": "The code currently does not account for large image sizes.",
+    "actions": [
+      "Navigate to the Documents module through the Settings.",
+      "Then find and click the affected document to enter the code editing mode.",
+      "Then adjust things such as the max-height property of the document to allow the images to appear properly."
+    ],
+    "solver": "Johann De Guzman",
+    "tags": [
+      "document",
+      "image"
+    ]
+  },
+  {
+    "ticket_id": "DASH-14487",
+    "lab": "Shalom Batangas",
+    "module": "Accounts",
+    "status": "resolved",
+    "date_reported": "2026-07-29",
+    "concern_summary": "An account within the lab cannot change the priority status in orders",
+    "root_cause": "The account does not have the necessary access to update this status",
+    "actions": [
+      "Navigate to the Members and member groups module through Settings.", 
+      "Then click the name of the affected account.",
+      "Then go to the scopes tab and give the necessary read, write, and delete access to queues, queue servers, and queue tasks."
+    ],
+    "solver": "Terenz Flores",
+    "tags": [
+      "scope",
+      "access",
+      "account",
+      "orders"
+    ]
+  }
 ]

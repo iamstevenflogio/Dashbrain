@@ -48,7 +48,6 @@ def extract_concern(query_text):
         return match.group(1).strip()
     return query_text.strip() # Fallback if "Concern:" isn't found
 
-
 def main():
     st.title("Company Brain")
 

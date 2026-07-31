@@ -58,17 +58,48 @@ def extract_ticket_id(query_text: str) -> Optional[str]:
     return match.group(1) if match else None
 
 
-def has_keyword_match(query: str, card: Dict[str, Any]) -> bool:
-    """True if the card's exact module name or any of its tags appears
-    literally in the query text (case-insensitive)."""
-    q = query.lower()
+def singularize(word: str) -> str:
+    """Very light English de-pluralization, just enough to stop 'signatory' vs
+    'signatories' from being treated as unrelated tokens by the keyword match."""
+    if word.endswith("ies") and len(word) > 4:
+        return word[:-3] + "y"
+    if word.endswith("es") and len(word) > 3:
+        stem = word[:-2]
+        # "-es" is a true plural suffix only after a sibilant ending
+        # (box/boxes, dish/dishes, watch/watches, buzz/buzzes, index/indexes).
+        # Everything else already ends in "e" in its singular form
+        # (service/services, file/files, template/templates) — just drop the "s".
+        if stem.endswith(("s", "x", "z", "ch", "sh")):
+            return stem
+        return word[:-1]
+    if word.endswith("s") and not word.endswith("ss") and len(word) > 3:
+        return word[:-1]
+    return word
+
+
+def normalize_text(text: str) -> str:
+    """Lowercases and singularizes each word, keeping word order/phrasing intact
+    so multi-word tags/module names still need to match as a phrase, not just
+    any overlapping word."""
+    words = re.findall(r'[a-z0-9\-]+', text.lower())
+    return " ".join(singularize(w) for w in words)
+
+
+def keyword_match_count(query: str, card: Dict[str, Any]) -> int:
+    """Counts how many of the card's module/tags appear as a phrase in the
+    query text (plural-insensitive). A card matching several specific tags
+    should rank above one that only shares one generic tag with many other
+    cards (e.g. a broad 'signatories' tag shared across delete/add/visibility
+    concerns alike)."""
+    q_norm = normalize_text(query)
+    count = 0
     module = card.get("module", "")
-    if isinstance(module, str) and module.lower() in q:
-        return True
+    if isinstance(module, str) and normalize_text(module) in q_norm:
+        count += 1
     for tag in card.get("tags", []):
-        if isinstance(tag, str) and tag.lower() in q:
-            return True
-    return False
+        if isinstance(tag, str) and normalize_text(tag) in q_norm:
+            count += 1
+    return count
 
 
 def load_cards(path: str) -> List[Dict[str, Any]]:
@@ -95,14 +126,20 @@ def search_cards(query: str, cards: List[Dict], embeddings: np.ndarray) -> List[
     query_embedding = model.encode([query], convert_to_numpy=True)
     scores = cosine_similarity(query_embedding, embeddings)[0]
 
-    # A card whose exact module name or tag appears in the query text is
-    # guaranteed to clear MIN_SCORE, regardless of how weak its semantic
-    # score is on its own (a single unusual word against a long paragraph
-    # can score very low semantically even when it's a perfect literal match).
-    scores = np.array([
-        max(scores[i] + 0.3, MIN_SCORE + 0.05) if has_keyword_match(query, cards[i]) else scores[i]
-        for i in range(len(cards))
-    ])
+    # A card whose module/tags match the query text gets boosted proportionally
+    # to how many distinct terms matched - a card matching 2 specific tags
+    # (e.g. "signatory" + "remove") should outrank one matching only 1 broad
+    # shared tag (e.g. "signatory" alone), even if its raw semantic score
+    # happens to be higher due to surface word repetition.
+    new_scores = []
+    for i in range(len(cards)):
+        count = keyword_match_count(query, cards[i])
+        if count > 0:
+            boosted = max(scores[i] + 0.15 * count, MIN_SCORE + 0.05 + 0.05 * (count - 1))
+            new_scores.append(boosted)
+        else:
+            new_scores.append(scores[i])
+    scores = np.array(new_scores)
 
     # 1. Find all indices that meet the minimum score threshold
     valid_indices = np.where(scores >= MIN_SCORE)[0]
