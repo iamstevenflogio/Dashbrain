@@ -2043,4 +2043,187 @@
       "orders"
     ]
   }
+  "ticket_id": "DASH-14407",
+  "lab": "Accutrust",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-28",
+  "concern summary": "The lab wants to update the content for their document.",
+  "root_cause": "A document in the lab is currently outdated in content.",
+  "actions": [
+    "Navigate to Documents and document files through the Settings. Then find the document of concern based on the lab. After clicking it's name you should be redirected to the editor where you can then update the contents of the file. After updating save the file accordingly based on your changes." 
+  ],
+  "solver": "Johann De Guzman",
+  "tags": [
+    "documents",
+    "update"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14408",
+  "lab": "Shalom (Padre Garcia)",
+  "module": "signatories",
+  "status": "resolved",
+  "date_reported": "2026-07-28",
+  "concern summary": "The lab wants to add new multiple signatories",
+  "root_cause": "The lab has new staff which they want to add signatories for.",
+  "actions": [
+    "Navigate to the Signatories module through the Settings. Then press the +ADD button to add the necessary signatories one by one based on the information prescribed by the lab." 
+  ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "signatories"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14410",
+  "lab": "Valulife",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-28",
+  "concern summary": "Addition of default remarks to a document",
+  "root_cause": "There is currently no default remarks for a document where there is no manually inputted remarks.",
+  "actions": [
+    "Navigate to Documents and document files through the Settings. Then find the document of concern based on the lab. After clicking it's name you should be redirected to the editor where you can then update the contents of the file, for this case you can add a conditional statement that would display a default text if the remarks is not present in the patient service." 
+  ],
+  "solver": "Lloyd Juan",
+  "tags": [
+    "documents",
+    "remarks"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14415",
+  "lab": "Sandbox (Clark)",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-28",
+  "concern summary": "The lab reported that an account cannot access patient services despite having the ticked all the scopes for this module",
+  "root_cause": "The account does not have proper permissions to access this module.",
+  "actions": [
+    "Navigate to the Members and member group module through the Settings. Then find the specified account based on the provided information. Then once you click the name it should redirect to the settings of the signatory, where you should now check if the scopes are properly ticked and if so continue to the Patient Service Management tab and tick the General Rule to apply an override access for a specific account based on your needs" 
+  ],
+  "solver": "Johann De Guzman",
+  "tags": [
+    "accounts",
+    "access",
+    "scope"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14417",
+  "lab": "Sto. Nino",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-28",
+  "concern summary": "The lab wants to adjust the content of the template options of a service field.",
+  "root_cause": "The current template options has an incorrect spelling of a term.",
+  "actions": [
+    "Navigate to Services through the settings. Then find the affected service and click it. Now find the affected service type and click the value in the column of data type to then find the options tab. Within the options tab you should be able to edit the necessary template options." 
+  ],
+  "solver": "Steven Flogio",
+  "tags": [
+    "services",
+    "template",
+    "options"
+      ]
+},
+
+{
+  "ticket_id": "DASH-",
+  "lab": "HealthBridge",
+  "module": "documents",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "ECG Chart image not showing in the resulting document.",
+  "root_cause": "The code currently does not account for large image sizes.",
+  "actions": [
+    "Navigate to the Documents and document files module through the Settings. Then find and click the affected document to enter the code editing mode. Then adjust things such as the max-heigt property of the document to allow the images to appear properly." 
+  ],
+  "solver": "Johann De Guzman",
+  "tags": [
+    "document",
+    "image"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14450",
+  "lab": "Mendoza MCDC",
+  "module": "services",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "The lab wants to update the service field name and for it to also reflect in the corresponding document.",
+  "root_cause": "The document test name and service field name is outdated and needs to be changed.",
+  "actions": [
+    "Navigate to the Service module through Settings. Then find the affected service and click on the name, you should then find the specific service field to be updated and simply click on it to edit as needed, additionally check the corresponding document and adjust the code to display the name of the service field as well. " 
+  ],
+  "solver": "Alain Marcus Leyva",
+  "tags": [
+    "document",
+    "services",
+    "update"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14455",
+  "lab": "BMCDC Mobile",
+  "module": "products",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "No products showing when transacting an order",
+  "root_cause": "The product had no price set",
+  "actions": [
+    "Navigate to the Products module through Settings. Then find and click the name of the affected product. You should now see a + ADD PRICE after being redirected, and you shoul now be able to add the necessary price of the said product." 
+  ],
+  "solver": "Rafael Nathan Ang",
+  "tags": [
+    "product",
+    "price"
+      ]
+},
+
+{
+  "ticket_id": "DASH-14461",
+  "lab": "BMCDC Lanang",
+  "module": "orders",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "The lab wants to adjust the home service fee percentage",
+  "root_cause": "The current percentage rate for the home service fee is outdated",
+  "actions": [
+    "Navigate to the Stores module through the settings. Then find the store that is affected by this fee and click it. After being redirected to the store settings go to the Cashier Module Settings tab where you will find the Order Item Templates and you can then edit the necessary percentages and caluclations there."
+  ],
+  "solver": "Jean Paul Espino",
+  "tags": [
+    "orders",
+    "fees"
+      ]
+},
+
+{
+  "ticket_id": "DASH-",
+  "lab": "Shalom Batangas",
+  "module": "accounts",
+  "status": "resolved",
+  "date_reported": "2026-07-29",
+  "concern summary": "An account within the lab cannot change the priority status in orders",
+  "root_cause": "The account does not have the necessary access to update this status",
+  "actions": [
+    "Navigate to the Members and member groups module through Settings. Then click the name of the affected account. Then go to the scopes tab and give the necessary read, write, and delete access to queues, queue servers, and queue tasks." 
+  ],
+  "solver": "Terenz Flores",
+  "tags": [
+    "scope",
+    "access",
+    "account",
+    "orders"
+      ]
+}
+
 ]
