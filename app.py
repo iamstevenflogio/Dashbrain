@@ -119,38 +119,53 @@ def load_cards(path: str) -> List[Dict[str, Any]]:
 
 
 def search_cards(query: str, cards: List[Dict], embeddings: np.ndarray) -> List[Dict[str, Any]]:
-    """Performs semantic search and applies MIN_SCORE threshold BEFORE applying TOP_K."""
+    """Performs semantic search, then applies keyword boosts + quick intent penalty."""
     if embeddings.size == 0:
         return []
 
     query_embedding = model.encode([query], convert_to_numpy=True)
     scores = cosine_similarity(query_embedding, embeddings)[0]
 
-    # A card whose module/tags match the query text gets boosted proportionally
-    # to how many distinct terms matched - a card matching 2 specific tags
-    # (e.g. "signatory" + "remove") should outrank one matching only 1 broad
-    # shared tag (e.g. "signatory" alone), even if its raw semantic score
-    # happens to be higher due to surface word repetition.
+    q_norm = normalize_text(query)
+    is_add_product_query = "add product" in q_norm and "price" not in q_norm
+
     new_scores = []
     for i in range(len(cards)):
-        count = keyword_match_count(query, cards[i])
+        card = cards[i]
+        score = scores[i]
+
+        count = keyword_match_count(query, card)
         if count > 0:
-            boosted = max(scores[i] + 0.15 * count, MIN_SCORE + 0.05 + 0.05 * (count - 1))
-            new_scores.append(boosted)
-        else:
-            new_scores.append(scores[i])
+            score = max(score + 0.15 * count, MIN_SCORE + 0.05 + 0.05 * (count - 1))
+
+        summary = normalize_text(card.get("concern_summary", ""))
+        tags = [normalize_text(t) for t in card.get("tags", [])]
+
+        contains_price = (
+            "price" in summary or
+            any("price" in tag for tag in tags)
+        )
+
+        exact_add_product = (
+            "add product" in summary or
+            any("add product" in tag for tag in tags)
+        )
+
+        if is_add_product_query and contains_price:
+            score -= 0.45
+
+        if is_add_product_query and exact_add_product:
+            score += 0.20
+
+        new_scores.append(score)
+
     scores = np.array(new_scores)
 
-    # 1. Find all indices that meet the minimum score threshold
     valid_indices = np.where(scores >= MIN_SCORE)[0]
-    
     if valid_indices.size == 0:
         return []
 
-    # 2. Sort the valid indices by their score (descending)
     sorted_valid_indices = valid_indices[np.argsort(scores[valid_indices])[::-1]]
-    
-    # 3. Grab only the TOP_K from the valid results
     top_indices = sorted_valid_indices[:TOP_K]
 
     return [{'card': cards[idx], 'score': float(scores[idx])} for idx in top_indices]
