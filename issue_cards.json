@@ -1002,9 +1002,7 @@
     ],
     "solver": "Louise Tobias",
     "tags": [
-      "Add-Product",
-      "Add Product"
-      
+      "add-product"
     ]
   },
   {
@@ -1291,7 +1289,7 @@
       "Navigate to the Services Module through the Settings",
       "Find the affected Service",
       "Find the particular service field targeted.",
-      "Navigate to either Templates or Options, and add the new templates provided by the lab."
+      "Add CLIA versions of the requested tests under the lab's Immuno/Sero services and update the related document templates."
     ],
     "solver": "Steven Flogio",
     "tags": [
@@ -1982,7 +1980,12 @@
     ],
     "solver": "Rafael Nathan Ang",
     "tags": [
+<<<<<<< HEAD
       "add-price"
+=======
+      "product",
+      "price"
+>>>>>>> parent of 62cc9d1 (revised 2 tickets that were too specific in their notes)
     ]
   },
   {
