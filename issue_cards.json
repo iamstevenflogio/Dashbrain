@@ -1001,7 +1001,9 @@
     ],
     "solver": "Louise Tobias",
     "tags": [
-      "add-product"
+      "Add-Product",
+      "Add Product"
+      
     ]
   },
   {
@@ -1288,7 +1290,7 @@
       "Navigate to the Services Module through the Settings",
       "Find the affected Service",
       "Find the particular service field targeted.",
-      "Add CLIA versions of the requested tests under the lab's Immuno/Sero services and update the related document templates."
+      "Navigate to either Templates or Options, and add the new templates provided by the lab."
     ],
     "solver": "Steven Flogio",
     "tags": [
@@ -1979,8 +1981,10 @@
     ],
     "solver": "Rafael Nathan Ang",
     "tags": [
+      "add-price",
+      "add price",
       "product",
-      "price"
+      "products"
     ]
   },
   {
