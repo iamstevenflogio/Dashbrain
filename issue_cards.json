@@ -1979,13 +1979,8 @@
       "You should now see a + ADD PRICE after being redirected, and you should now be able to add the necessary price of the said product."
     ],
     "solver": "Rafael Nathan Ang",
-    "tags": [
-<<<<<<< HEAD
+    "tags": [ 
       "add-price"
-=======
-      "product",
-      "price"
->>>>>>> parent of 62cc9d1 (revised 2 tickets that were too specific in their notes)
     ]
   },
   {
