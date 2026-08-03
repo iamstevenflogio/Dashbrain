@@ -119,96 +119,41 @@ def load_cards(path: str) -> List[Dict[str, Any]]:
 
 
 def search_cards(query: str, cards: List[Dict], embeddings: np.ndarray) -> List[Dict[str, Any]]:
-    """Performs semantic search, then applies keyword boosts + quick intent penalty."""
+    """Performs semantic search and applies MIN_SCORE threshold BEFORE applying TOP_K."""
     if embeddings.size == 0:
         return []
 
     query_embedding = model.encode([query], convert_to_numpy=True)
     scores = cosine_similarity(query_embedding, embeddings)[0]
 
-    q_norm = normalize_text(query)
-    is_add_product_query = "add product" in q_norm and "price" not in q_norm
-
+    # A card whose module/tags match the query text gets boosted proportionally
+    # to how many distinct terms matched - a card matching 2 specific tags
+    # (e.g. "signatory" + "remove") should outrank one matching only 1 broad
+    # shared tag (e.g. "signatory" alone), even if its raw semantic score
+    # happens to be higher due to surface word repetition.
     new_scores = []
     for i in range(len(cards)):
-        card = cards[i]
-        score = scores[i]
-
-        count = keyword_match_count(query, card)
+        count = keyword_match_count(query, cards[i])
         if count > 0:
-            score = max(score + 0.15 * count, MIN_SCORE + 0.05 + 0.05 * (count - 1))
-
-        summary = normalize_text(card.get("concern_summary", ""))
-        tags = [normalize_text(t) for t in card.get("tags", [])]
-
-        contains_price = (
-            "price" in summary or
-            any("price" in tag for tag in tags)
-        )
-
-        exact_add_product = (
-            "add product" in summary or
-            any("add product" in tag for tag in tags)
-        )
-
-        if is_add_product_query and contains_price:
-            score -= 0.45
-
-        if is_add_product_query and exact_add_product:
-            score += 0.20
-
-        new_scores.append(score)
-
+            boosted = max(scores[i] + 0.15 * count, MIN_SCORE + 0.05 + 0.05 * (count - 1))
+            new_scores.append(boosted)
+        else:
+            new_scores.append(scores[i])
     scores = np.array(new_scores)
 
+    # 1. Find all indices that meet the minimum score threshold
     valid_indices = np.where(scores >= MIN_SCORE)[0]
+    
     if valid_indices.size == 0:
         return []
 
+    # 2. Sort the valid indices by their score (descending)
     sorted_valid_indices = valid_indices[np.argsort(scores[valid_indices])[::-1]]
+    
+    # 3. Grab only the TOP_K from the valid results
     top_indices = sorted_valid_indices[:TOP_K]
 
     return [{'card': cards[idx], 'score': float(scores[idx])} for idx in top_indices]
-
-def has_phrase(text: str, phrase: str) -> bool:
-    return normalize_text(phrase) in normalize_text(text)
-
-def detect_query_intent(query: str) -> str:
-    q = normalize_text(query)
-
-    if has_phrase(q, "add product") and "price" not in q:
-        return "add-product"
-
-    if "price" in q or has_phrase(q, "add price") or has_phrase(q, "product price"):
-        return "pricing"
-
-    return "generic"
-
-def apply_intent_penalty(query: str, card: Dict[str, Any], score: float) -> float:
-    intent = detect_query_intent(query)
-
-    summary = normalize_text(card.get("concern_summary", ""))
-    tags = [normalize_text(t) for t in card.get("tags", [])]
-
-    contains_price_signal = (
-        "price" in summary or
-        any("price" in t for t in tags)
-    )
-
-    exact_add_product_summary = has_phrase(summary, "add product")
-    exact_add_product_tag = any(has_phrase(t, "add product") for t in tags)
-
-    if intent == "add-product":
-        if contains_price_signal:
-            score -= 0.45
-        if exact_add_product_summary or exact_add_product_tag:
-            score += 0.20
-
-    elif intent == "pricing":
-        if contains_price_signal:
-            score += 0.15
-
-    return score
 
 
 # --- App Initialization ---
