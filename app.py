@@ -155,6 +155,46 @@ def search_cards(query: str, cards: List[Dict], embeddings: np.ndarray) -> List[
 
     return [{'card': cards[idx], 'score': float(scores[idx])} for idx in top_indices]
 
+def has_phrase(text: str, phrase: str) -> bool:
+    return normalize_text(phrase) in normalize_text(text)
+
+def detect_query_intent(query: str) -> str:
+    q = normalize_text(query)
+
+    if has_phrase(q, "add product") and "price" not in q:
+        return "add-product"
+
+    if "price" in q or has_phrase(q, "add price") or has_phrase(q, "product price"):
+        return "pricing"
+
+    return "generic"
+
+def apply_intent_penalty(query: str, card: Dict[str, Any], score: float) -> float:
+    intent = detect_query_intent(query)
+
+    summary = normalize_text(card.get("concern_summary", ""))
+    tags = [normalize_text(t) for t in card.get("tags", [])]
+
+    contains_price_signal = (
+        "price" in summary or
+        any("price" in t for t in tags)
+    )
+
+    exact_add_product_summary = has_phrase(summary, "add product")
+    exact_add_product_tag = any(has_phrase(t, "add product") for t in tags)
+
+    if intent == "add-product":
+        if contains_price_signal:
+            score -= 0.45
+        if exact_add_product_summary or exact_add_product_tag:
+            score += 0.20
+
+    elif intent == "pricing":
+        if contains_price_signal:
+            score += 0.15
+
+    return score
+
 
 # --- App Initialization ---
 # NOTE: Loading the model and computing embeddings at the module level is great 
