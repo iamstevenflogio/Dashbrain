@@ -10,7 +10,7 @@ import re
 MODEL_NAME = "all-MiniLM-L6-v2"
 JSON_PATH = "issue_cards.json"
 TOP_K = 5
-MIN_SCORE = 0.50
+MIN_SCORE = 0.35
 
 def cosine_similarity(vec1, vec2):
     """Calculates cosine similarity using pure Numpy (no sklearn needed)."""
