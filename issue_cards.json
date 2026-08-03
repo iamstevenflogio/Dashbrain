@@ -1972,7 +1972,7 @@
     "module": "Products",
     "status": "resolved",
     "date_reported": "2026-07-29",
-    "concern_summary": "No products showing when transacting an order",
+    "concern_summary": "Add product price",
     "root_cause": "The product had no price set",
     "actions": [
       "Navigate to the Products module through Settings.",
