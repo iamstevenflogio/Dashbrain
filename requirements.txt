@@ -1,8 +1,6 @@
 Flask==3.0.0
 gunicorn==21.2.0
-sentence-transformers==2.7.0
 scikit-learn==1.5.0
 numpy==1.26.4
-optimum[onnxruntime]==1.27.0
 torch==2.8.0
 optimum-onnx[onnxruntime]==0.0.2
