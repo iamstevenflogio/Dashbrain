@@ -606,7 +606,9 @@
     ],
     "solver": "Louise Tobias",
     "tags": [
-      "add-product"
+      "add-product",
+      "add-product",
+      "product"
     ]
   },
   {
@@ -1672,6 +1674,8 @@
     "solver": "Trisha Harun",
     "tags": [
       "Products",
+      "Product",
+      "add-product",
       "Plans",
       "Plan Types",
       "Plan Benefit Types",
@@ -2042,7 +2046,8 @@
       "account",
       "orders"
     ]
-  }
+  },
+  {
   "ticket_id": "DASH-14407",
   "lab": "Accutrust",
   "module": "documents",
