@@ -8,20 +8,30 @@ from flask import Flask, request, render_template
 import onnxruntime as ort
 from transformers import AutoTokenizer
 from typing import List, Dict, Any, Optional
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # --- Configuration ---
 MODEL_PATH = "models/dashbrain-int8-onnx"
 JSON_PATH = "issue_cards.json"
 EMB_CACHE = "card_embeddings.pkl"
 TOP_K = 5
-MIN_SCORE = 0.70
+MIN_SCORE = 0.50
 
 # --- ONNX Embedding Wrapper ---
 class OnnxEmbedder:
     def __init__(self, model_path: str):
         self.tokenizer = AutoTokenizer.from_pretrained(model_path)
+
+        sess_options = ort.SessionOptions()
+        sess_options.intra_op_num_threads = 1
+        sess_options.inter_op_num_threads = 1
+        sess_options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+        sess_options.enable_cpu_mem_arena = False
+
         self.session = ort.InferenceSession(
             os.path.join(model_path, "model_quantized.onnx"),
+            sess_options=sess_options,
             providers=['CPUExecutionProvider']
         )
         
