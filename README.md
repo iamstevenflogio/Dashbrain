@@ -7,14 +7,13 @@ Paste a ticket concern, get the most similar past issue cards — no more diggin
 
 <img src="https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white" alt="Python 3.12">
 <img src="https://img.shields.io/badge/framework-Flask-black?logo=flask&logoColor=white" alt="Flask">
-<img src="https://img.shields.io/badge/inference-ONNX%20Runtime-lightgrey?logo=onnx&logoColor=white" alt="ONNX Runtime">
 <img src="https://img.shields.io/badge/model-all--MiniLM--L6--v2%20(INT8)-orange" alt="Model">
 
 </div>
 
 <br>
 
-Dashbrain runs on a **quantized ONNX version of `all-MiniLM-L6-v2`** for low memory usage, with sentence embeddings and cosine similarity powering the search, all served through a lightweight Flask web interface.
+Dashbrain runs on ** `all-MiniLM-L6-v2`** for low memory usage, with sentence embeddings and cosine similarity powering the search, all served through a lightweight Flask web interface.
 
 <br>
 
