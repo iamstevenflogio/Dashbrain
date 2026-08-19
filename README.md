@@ -179,8 +179,7 @@ python app.py
 |---|---|
 | `NameError: name 'SentenceTransformer' is not defined` | Leftover old code in `app.py` from before the ONNX migration — check for duplicate model-loading blocks. |
 | `404` on every page, including `/` | Check for a duplicate `if __name__ == '__main__':` block placed before your routes are defined — it can trigger `app.run()` too early. |
-| `Killed` during `quantize_model.py` | Out of memory. Build the model on a machine with more free RAM, or add swap space, then copy the resulting `models/dashbrain-int8-onnx/` folder over. |
-| `KeyError` on quantization config | Make sure you're using `AutoQuantizationConfig` from `optimum.onnxruntime.configuration`, not raw string values. |
+| Killed while running app.py or during startup | Out of memory while loading the embedding model or rebuilding embeddings. Free RAM, add swap space, use a smaller model, or prebuild/copy card_embeddings.pkl and model files from a machine with more memory. github |
 | `ResolutionImpossible` during `pip install` | Check `requirements.txt` for conflicting `optimum` and `optimum-onnx` version pins — only one should be present. |
 
 <br>
@@ -190,12 +189,10 @@ python app.py
 ```
 Dashbrain/
 ├── app.py                     # Flask app + ONNX embedding wrapper + search logic
-├── quantize_model.py          # One-time script to export + quantize the model
 ├── requirements.txt           # Python dependencies
 ├── issue_cards.json           # Your support ticket knowledge base (not committed)
 ├── card_embeddings.pkl        # Cached embeddings (auto-generated, not committed)
 ├── models/
-│   └── dashbrain-int8-onnx/   # Quantized ONNX model (auto-generated, not committed)
 └── templates/
     └── index.html             # Web UI template
 ```
@@ -204,6 +201,7 @@ Dashbrain/
 
 <div align="center">
 
-Built for support engineers who'd rather search than scroll. 🔍
+Built for support engineers who'd rather search than scroll thorugh google chats. 🔍
+- Steven, probably an Ex-Intern by now
 
 </div>
