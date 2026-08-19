@@ -90,12 +90,12 @@ pip install -r requirements.txt
 
 This installs Flask, ONNX Runtime, Optimum, Torch (used only for building the model, not for running the app), and other required packages.
 
-### 4. Build the quantized model
+### 4. Run app.py
 
-> The ONNX model files aren't stored in this repo (they're build artifacts, not source code) — generate them locally.
+> Run the program. :)
 
 ```bash
-python quantize_model.py
+python app.py
 ```
 
 This downloads `sentence-transformers/all-MiniLM-L6-v2`, exports it to ONNX, and applies INT8 quantization. It creates two folders:
