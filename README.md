@@ -98,17 +98,6 @@ This installs Flask, ONNX Runtime, Optimum, Torch (used only for building the mo
 python app.py
 ```
 
-This downloads `sentence-transformers/all-MiniLM-L6-v2`, exports it to ONNX, and applies INT8 quantization. It creates two folders:
-
-| Folder | Purpose |
-|---|---|
-| `models/dashbrain-onnx/` | The plain ONNX export |
-| `models/dashbrain-int8-onnx/` | The quantized model actually used by the app |
-
-This step needs **at least 2GB of free RAM**, since it briefly loads PyTorch and the export toolchain. It only needs to be run once, unless you change the base model or quantization settings.
-
-> ⚠️ **Low-RAM machine?** If the script gets `Killed`, build the model on a different machine instead and copy the `models/dashbrain-int8-onnx/` folder over.
-
 ### 5. Add your issue cards
 
 Place your `issue_cards.json` file in the project root. Each card should look like:
